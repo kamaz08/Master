@@ -1,0 +1,62 @@
+﻿@model AlgorytmyOnline.Models.L1GraphModelcs
+@using Chart.Mvc.Extensions;
+@using Chart.Mvc.ComplexChart;
+@using Chart.Mvc;
+@using Chart.Mvc.SimpleChart;
+
+
+<body>
+    @{
+        var barChart = new LineChart();
+        barChart.ComplexData.Labels.AddRange(new [] {100, 500, 1000, 5000, 10000, 50000, 100000 }.ToList().Select(x=>x.ToString()));
+        barChart.ComplexData.Datasets.AddRange(new List<ComplexDataset>
+                         {
+                            new ComplexDataset
+                                {
+                                    Data = Model.Data[0],
+                                    Label = "Liniowy",
+                                    FillColor = "rgba(0,0,220,0.2)",
+                                    StrokeColor = "rgba(0,0,220,1)",
+                                    PointColor = "rgba(0,0,220,1)",
+                                    PointStrokeColor = "#fff",
+                                    PointHighlightFill = "#fff",
+                                    PointHighlightStroke = "rgba(220,220,220,1)",
+                                },
+                            new ComplexDataset
+                                    {
+                                        Data = Model.Data[1],
+                                        Label = "Harmoniczny",
+                                        FillColor = "rgba(0,220,220,0.2)",
+                                        StrokeColor = "rgba(0,220,220,1)",
+                                        PointColor = "rgba(0,220,220,1)",
+                                        PointStrokeColor = "#fff",
+                                        PointHighlightFill = "#fff",
+                                        PointHighlightStroke = "rgba(220,220,220,1)",
+                                    },
+                            new ComplexDataset
+                                    {
+                                        Data = Model.Data[2],
+                                        Label = "Geometryczny",
+                                        FillColor = "rgba(220,0,0,0.2)",
+                                        StrokeColor = "rgba(220,0,0,1)",
+                                        PointColor = "rgba(220,0,0,1)",
+                                        PointStrokeColor = "#fff",
+                                        PointHighlightFill = "#fff",
+                                        PointHighlightStroke = "rgba(220,220,220,1)",
+                                    },
+                            new ComplexDataset
+                                    {
+                                        Data = Model.Data[3],
+                                        Label = "Geometryczny",
+                                        FillColor = "rgba(220,255,255,0.2)",
+                                        StrokeColor = "rgba(220,255,255,1)",
+                                        PointColor = "rgba(255,255,255,2)",
+                                        PointStrokeColor = "#fff",
+                                        PointHighlightFill = "#fff",
+                                        PointHighlightStroke = "rgba(220,220,220,1)",
+                                    }
+                        });
+    }
+    <canvas id="@Model.Id" width="1000" height="500"></canvas>
+    @Html.CreateChart(@Model.Id, barChart)
+</body>
