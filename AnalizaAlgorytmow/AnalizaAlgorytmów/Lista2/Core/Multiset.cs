@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista2
+namespace Lista2.Core
 {
     public abstract class MultisetAbstract<T>
     {

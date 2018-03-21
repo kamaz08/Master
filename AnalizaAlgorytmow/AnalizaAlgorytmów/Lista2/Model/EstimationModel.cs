@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista2
+namespace Lista2.Model
 {
-    public static class ByteArrayComparer
+    public class EstimationModel
     {
-
+        public List<GraphModel> ListGraph { get; set; }
     }
 }

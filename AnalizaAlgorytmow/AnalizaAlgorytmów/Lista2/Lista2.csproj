@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -41,12 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ByteArrayComparer.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="HashFunction.cs" />
+    <Compile Include="Core\HashFunction.cs" />
+    <Compile Include="Core\HashMultiset.cs" />
     <Compile Include="ItemDouble.cs" />
     <Compile Include="KMin.cs" />
-    <Compile Include="Multiset.cs" />
+    <Compile Include="Core\Multiset.cs" />
+    <Compile Include="Model\EstimationModel.cs" />
+    <Compile Include="Model\GraphModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,9 @@
       <Project>{8FF08001-EB42-4DA0-81B1-F1962ADFC90B}</Project>
       <Name>Lista1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
