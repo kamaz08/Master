@@ -1,0 +1,33 @@
+﻿@model Lista1.ElectionGraph
+@using Chart.Mvc.Extensions;
+@using Chart.Mvc.ComplexChart;
+@using Chart.Mvc;
+@using Chart.Mvc.SimpleChart;
+
+<body>
+    <h1>@Model.Title</h1>
+    <p>E=@Model.E</p>
+    <p>Var=@Model.Var</p>
+    <p>Pr=@Model.Pr</p>
+    @{
+        var barChart = new BarChart();
+        barChart.ComplexData.Labels.AddRange(Model.GraphData.Select(x => x.Key.ToString()));
+        barChart.ComplexData.Datasets.AddRange(new List<ComplexDataset>
+                             {
+                                new ComplexDataset
+                                    {
+                                        Data = Model.GraphData.Select(x=>(double)x.Count).ToList(),
+                                        Label = "My First dataset",
+                                        FillColor = "rgba(0,0,220,0.2)",
+                                        StrokeColor = "rgba0,0,220,1)",
+                                        PointColor = "rgba(0,0,220,1)",
+                                        PointStrokeColor = "#fff",
+                                        PointHighlightFill = "#fff",
+                                        PointHighlightStroke = "rgba(220,220,220,1)",
+                                    }
+                            });
+    }
+
+    <canvas id="@Model.Id" width="1000" height="500"></canvas>
+    @Html.CreateChart(@Model.Id, barChart)
+</body>
