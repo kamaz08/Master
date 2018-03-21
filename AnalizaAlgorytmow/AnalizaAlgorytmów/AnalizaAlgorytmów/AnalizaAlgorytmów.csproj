@@ -183,7 +183,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\L1\ElectionController.cs" />
-    <Compile Include="Controllers\L2\L2Controller.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,7 +250,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="Views\L2\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -270,10 +268,6 @@
     <ProjectReference Include="..\Lista1\Lista1.csproj">
       <Project>{8ff08001-eb42-4da0-81b1-f1962adfc90b}</Project>
       <Name>Lista1</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Lista2\Lista2.csproj">
-      <Project>{f5a18b6f-9b79-40c9-ae99-d4b53d291fa6}</Project>
-      <Name>Lista2</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
