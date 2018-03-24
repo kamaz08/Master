@@ -45,7 +45,6 @@ int main()
 		for (i = 0; i < nthreads; i++) {
 			Pollard *polard = new Pollard(p, g, h, q, score);
 			polard->Finder(aTab[i], bTab[i]);
-			//polard->Finder();
 		}
 	}
 	getchar();	getchar();	getchar();

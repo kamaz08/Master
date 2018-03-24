@@ -54,38 +54,3 @@ void Pollard::Finder(ZZ a, ZZ b) {
 		}
 	}
 }
-
-//void Pollard::Finder() {
-//	for (ZZ i = ZZ(1); i < _q; ++i) {
-//		ZZ a, b;
-//		RandomBits(a, 64);
-//		RandomBits(b, 64);
-//		a %= _q;
-//		b %= _q;
-//		ZZ x = AddMod(PowerMod(_g, a, _p), PowerMod(_h, b, _p), _p);
-//		new_xab(x, a, b);
-//		Score* temp = new Score();
-//		temp->X = x; temp->A = a; temp->B = b;
-//#pragma omp critical 
-//		{
-//			int a = omp_get_thread_num();
-//			std::set<Score>::iterator it = _scoreSet.find(*temp);
-//			if (it != _scoreSet.end()) {
-//				ZZ A = (*it).A;
-//				ZZ B = (*it).B;
-//				ZZ X = (*it).X;
-//				std::cout << A << " " << a << std::endl;
-//				if (a != A || b != B) {
-//					ZZ d, L, P;
-//					SubMod(L, B, b, _q);
-//					SubMod(P, a, A, _q);
-//					std::cout << L << " * x = " << P << " mod(" << _q << ")" << std::endl;
-//					std::cout << "x = " << solv_mods(L, P) << std::endl;
-//				}
-//			}
-//			else {
-//				_scoreSet.insert(*temp);
-//			}
-//		}
-//	}
-//}
