@@ -40,7 +40,7 @@ public:
 		ZZ x = ZZ(1), a = ZZ(0), b = ZZ(0);
 		ZZ X = ZZ(x), A = ZZ(a), B = ZZ(b);
 
-		for (ZZ i = ZZ(1); i < _p; ++i) {
+		for (ZZ i = ZZ(1); i < _q; ++i) {
 			new_xab(x, a, b);
 			new_xab(X, A, B);
 			new_xab(X, A, B);
