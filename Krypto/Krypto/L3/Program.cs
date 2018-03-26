@@ -32,7 +32,8 @@ namespace L3
 
             var pro = new Problem2();
 
-            pro.Test(test.GetKey(0));
+            pro.Exe2(test.GetKey(0));
+            //pro.Test(test.GetKey(0));
 
 
         }
