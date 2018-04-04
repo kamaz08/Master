@@ -7,6 +7,9 @@ void Pollard::new_xab(ZZ& x, ZZ& a, ZZ& b) {
 	case 1: x = x*_g % _p;	  a = (a + 1) % _q;		                 break;
 	case 2: x = x*_h  % _p;		                  b = (b + 1) % _q;  break;
 	}
+
+//#pragma omp critical 
+//	std::cout << x << '\t' << NumBits(x) << std::endl;
 }
 ZZ Pollard::solv_mods(ZZ a, ZZ b) {
 	ZZ d;
@@ -24,12 +27,20 @@ ZZ Pollard::solv_mods(ZZ a, ZZ b) {
 
 void Pollard::Finder(ZZ a, ZZ b) {
 	ZZ x = AddMod(PowerMod(_g, a, _p), PowerMod(_h, b, _p), _p);
-#pragma omp critical 
-	std::cout << omp_get_thread_num() << "\t" << a << "\t" << b << std::endl;
+	ZZ j = ZZ(40), k = ZZ(1);
 	for (ZZ i = ZZ(1); i < _q; ++i) {
-		new_xab(x, a, b);
+		while (!(NumBits(x) < j)) {
+			new_xab(x, a, b);
+			k++;
+			if (k == 1000) {
+				k = 0;
+				j += 1;
+			}
+		}
+
 		Score* temp = new Score();
 		temp->X = x; temp->A = a; temp->B = b;
+
 #pragma omp critical 
 		{
 			//std::cout << "ja" << omp_get_thread_num() << std::endl;
@@ -47,8 +58,12 @@ void Pollard::Finder(ZZ a, ZZ b) {
 					std::cout << L << " * x = " << P << " mod(" << _q << ")" << std::endl;
 					std::cout << "x = " << solv_mods(L, P) << std::endl;
 				}
-			}
-			else if(i%100 == 1) {
+				else {
+					RandomBits(a, NumBits(_q));
+					RandomBits(b, NumBits(_q));
+
+				}
+			} else {
 				_scoreSet->insert(*temp);
 			}
 		}
