@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lista2
+namespace Lista2.Hash
 {
-    public abstract class MultisetAbstract<T>
+    public abstract class MultisetAbstract
     {
-        protected List<List<T>> _multiSetList;
+        protected List<List<int>> _multiSetList;
         public MultisetAbstract()
         {
-            _multiSetList = new List<List<T>>();
+            _multiSetList = new List<List<int>>();
         }
 
         public int GetLength()
@@ -19,13 +19,13 @@ namespace Lista2
             return _multiSetList.Count();
         }
 
-        public List<T> GetMultiset(int n)
+        public List<int> GetMultiset(int n)
         {
             return _multiSetList[n];
         }
     }
 
-    public class GoodMultiset : MultisetAbstract<int>
+    public class GoodMultiset : MultisetAbstract
     {
         public GoodMultiset(int begin, int end) : base()
         {
@@ -34,7 +34,7 @@ namespace Lista2
         }
     }
 
-    public class BadMultiset : MultisetAbstract<int>
+    public class BadMultiset : MultisetAbstract
     {
         public BadMultiset(int begin, int end) : base()
         {

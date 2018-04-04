@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F5A18B6F-9B79-40C9-AE99-D4B53D291FA6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Lista2</RootNamespace>
     <AssemblyName>Lista2</AssemblyName>
@@ -29,10 +29,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,12 +55,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ByteArrayComparer.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="HashFunction.cs" />
+    <Compile Include="DbContext.cs" />
+    <Compile Include="HashModel.cs" />
+    <Compile Include="Hash\HashEnum.cs" />
+    <Compile Include="Hash\HashFunction.cs" />
+    <Compile Include="Hash\HashElement.cs" />
+    <Compile Include="Hash\HashGenerator.cs" />
     <Compile Include="ItemDouble.cs" />
     <Compile Include="KMin.cs" />
-    <Compile Include="Multiset.cs" />
+    <Compile Include="Hash\Multiset.cs" />
+    <Compile Include="Migrations\201803310950553_InitialCreate.cs" />
+    <Compile Include="Migrations\201803310950553_InitialCreate.Designer.cs">
+      <DependentUpon>201803310950553_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311222356_changehashmodel.cs" />
+    <Compile Include="Migrations\201803311222356_changehashmodel.Designer.cs">
+      <DependentUpon>201803311222356_changehashmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +80,18 @@
       <Project>{8FF08001-EB42-4DA0-81B1-F1962ADFC90B}</Project>
       <Name>Lista1</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201803310950553_InitialCreate.resx">
+      <DependentUpon>201803310950553_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311222356_changehashmodel.resx">
+      <DependentUpon>201803311222356_changehashmodel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
