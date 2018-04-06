@@ -16,6 +16,7 @@ int main()
 
 	ZZ* aTab = new ZZ[nthreads];
 	ZZ* bTab = new ZZ[nthreads];
+	ZZ* xTab = new ZZ[nthreads];
 	int bits = 16;
 
 	ZZ p = conv<ZZ>(23), g = conv<ZZ>(4), h = conv<ZZ>(8), q = conv<ZZ>(11);
@@ -29,7 +30,7 @@ int main()
 		RandomBits(bTab[i], bits);
 		aTab[i] = aTab[i] % q;
 		bTab[i] = bTab[i] % q;
-		bits = bits > 64 ? 4 : bits << 1;
+		bits = bits > 40 ? 4 : bits << 1;
 	}
 	std::set<Score>* score = new std::set<Score>();
 	std::cout << p << endl << g << endl << q << endl << h << endl;
@@ -37,17 +38,17 @@ int main()
 
 
 
-
 	int i;
-#pragma omp parallel private(i) shared(p,g,h,q,score) num_threads(nthreads) 
-	{
-#pragma omp for 
-		for (i = 0; i < nthreads; i++) {
-			Pollard *polard = new Pollard(p, g, h, q, score);
-			polard->Finder(aTab[i], bTab[i]);
-		}
+	Pollard **polard = new Pollard*[nthreads];
+	for (i = 0; i < nthreads; i++) {
+		polard[i] = new Pollard(p, g, h, q, score);
 	}
-	getchar();	getchar();	getchar();
+#pragma omp parallel for private(i) num_threads(nthreads)
+	for (i = 0; i < nthreads; i++) {
+		polard[i]->Finder(aTab[i], bTab[i], xTab[i]);
+	}
+
+	getchar();	getchar();
 	return 0;
 }
 

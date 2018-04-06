@@ -25,6 +25,7 @@ public:
 		: _p(p), _g(g), _h(h), _q(q){
 		_scoreSet = scoreSet;
 	}
-	void Finder(ZZ a, ZZ b);
+	void Finder(ZZ a, ZZ b, ZZ x);
 	void Finder();
+	void Check(ZZ x);
 };

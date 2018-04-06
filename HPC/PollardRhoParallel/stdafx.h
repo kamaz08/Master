@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <set>
 #include <ctime>
-
-
+#include<Windows.h>
 
 // TODO: reference additional headers your program requires here
