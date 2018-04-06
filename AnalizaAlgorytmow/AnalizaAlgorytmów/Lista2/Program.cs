@@ -18,7 +18,7 @@ namespace Lista2
         {
             var x = new Program();
 
-            x.Zad5();
+            x.test();
         }
 
         public void Zad3()
@@ -140,6 +140,15 @@ namespace Lista2
                     r = mid;
             }
             return mid;
+        }
+
+
+        public void test()
+        {
+            var set = new StupidMultiset(1, 10000);
+            var generator = new HashGenerator();
+            var crc = generator.Kmin(400, new Crc64Function(), set);
+            GenerateGraphZ3("CRC64stupid", generator, crc);
         }
     }
 }

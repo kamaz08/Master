@@ -42,4 +42,18 @@ namespace Lista2.Hash
                 _multiSetList.Add(Enumerable.Range(begin, i).ToList());
         }
     }
+
+    public class StupidMultiset : MultisetAbstract
+    {
+        public StupidMultiset(int begin, int end) : base()
+        {
+            for (int i = begin; i <= end; i++)
+            {
+                var rand = new Random();
+                var list = Enumerable.Range(((begin + i - 1) * (i - 1)) / 2, i).ToList().Select(x => x * rand.Next());
+                _multiSetList.Add(list.ToList());
+            }
+        }
+
+    }
 }
