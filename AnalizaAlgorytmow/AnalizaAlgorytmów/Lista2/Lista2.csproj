@@ -56,10 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContext.cs" />
+    <Compile Include="Graph\GraphGenerator.cs" />
     <Compile Include="HashModel.cs" />
     <Compile Include="Hash\HashEnum.cs" />
     <Compile Include="Hash\HashFunction.cs" />
-    <Compile Include="Hash\HashElement.cs" />
     <Compile Include="Hash\HashGenerator.cs" />
     <Compile Include="ItemDouble.cs" />
     <Compile Include="KMin.cs" />
@@ -73,6 +73,7 @@
       <DependentUpon>201803311222356_changehashmodel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
