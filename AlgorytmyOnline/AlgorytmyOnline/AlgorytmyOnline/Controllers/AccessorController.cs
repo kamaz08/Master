@@ -73,13 +73,13 @@ namespace AlgorytmyOnline.L1
             var test = new AccessorTest(selfAssembler, numberPropability);
             var result = new List<double>();
 
-            result.Add(test.Test(100, 10) / 100.0);
-            result.Add(test.Test(500, 10) / 500.0);
-            result.Add(test.Test(1000, 10) / 1000.0);
-            result.Add(test.Test(5000, 10) / 5000.0);
-            result.Add(test.Test(10000, 10) / 10000.0);
-            result.Add(test.Test(50000, 10) / 50000.0);
-            result.Add(test.Test(100000, 10) / 100000.0);
+            result.Add(test.Test(100, 100) / 100.0);
+            result.Add(test.Test(500, 100) / 500.0);
+            result.Add(test.Test(1000, 100) / 1000.0);
+            result.Add(test.Test(5000, 100) / 5000.0);
+            result.Add(test.Test(10000, 100) / 10000.0);
+            result.Add(test.Test(50000, 100) / 50000.0);
+            result.Add(test.Test(100000, 100) / 100000.0);
             return result;
         }
     }

@@ -9,7 +9,9 @@ namespace AlgorytmyOnline.L1
     {
         public T[] Assmebly(T[] array, int index)
         {
-            return Swap(array, index, index - 1);
+            for (int i = index; i > 0; i--)
+                array = Swap(array, index, index - 1);
+            return array;
         }
     }
 }
