@@ -1,0 +1,61 @@
+data;
+
+set VehicleType := Standard Vip;
+
+param VehicleRate:= Standard 1.0 Vip 1.15;
+param VehicleDeficiencyRate:= Standard 10000 Vip 20000;
+param VehicleReplacement : 
+            Standard Vip := 
+Standard    1        1
+Vip         0        1;
+
+set Town :=  Warszawa Gdansk Szczecin Wroclaw Krakow Berlin Rostok Lipsk Praga Brno Bratyslawa Koszyce Budapeszt;
+
+param TownDistance : 
+            Warszawa    Gdansk  Szczecin   Wroclaw    Krakow    Berlin  Rostok  Lipsk   Praga   Brno    Bratyslawa  Koszyce     Budapeszt :=
+Warszawa    0.0         415.6   572.3      353.8      295.3     574.0   796.1   732.8   687.2   576.0   698.7       479.2       895.3      
+Gdansk      415.6       0       364.2      555.0      584.6     602.4   623.3   754.4   888.4   777.1   899.9       834.6       1096
+Szczecin    572.3       364.2   0          376.6      665.2     151.5   265.7   361.9   497.8   706.6   830.0       915.2       1027
+Wroclaw     353.8       555.0   376.6      0          271.9     346.1   573.3   380.8   335.2   401.9   524.6       522.0       721.2
+Krakow      295.3       584.6   665.2      271.9      0         600.2   827.3   634.9   534.2   332.4   455.2       262.6       395.3
+Berlin      574.0       602.4   151.5      346.1      600.2     0       233.7   193.5   351.0   559.7   683.2       850.5       879.8
+Rostok      796.1       623.3   265.7      573.3      827.3     233.7   0       390.9   585.1   793.9   917.3       1085        1114
+Lipsk       732.8       754.4   361.9      380.8      634.9     193.5   390.9   0       262.7   471.4   594.9       884.9       791.5
+Praga       687.2       888.4   497.8      335.2      534.2     351.0   585.1   262.7   0       210.7   334.2       668.3       530.8
+Brno        576.0       777.1   706.6      401.9      332.4     559.7   793.9   471.4   210.7   0       131.3       460.5       327.9
+Bratyslawa  698.7       899.9   830.0      524.6      455.2     683.2   917.3   594.9   334.2   131.3   0           403.6       200.1
+Koszyce     479.2       834.6   915.2      522.0      262.6     850.5   1085    884.9   668.3   460.5   403.6       0           259.5
+Budapeszt   895.3       1096    1027       721.2      395.3     879.8   1114    791.5   530.8   327.9   200.1       259.5       0;
+
+param Overload:
+                Standard    Vip :=
+Warszawa        14          0
+Gdansk          0           2
+Szczecin        12          4
+Wroclaw         0           10
+Krakow          10          0
+Berlin          0           0
+Rostok          0           4
+Lipsk           0           10
+Praga           10          0
+Brno            0           2
+Bratyslawa      0           8
+Koszyce         0           4
+Budapeszt       0           4;
+
+param Deficiency:
+                Standard    Vip :=
+Warszawa        0           4           
+Gdansk          20          0
+Szczecin        0           0
+Wroclaw         8           0
+Krakow          0           8   
+Berlin          16          4
+Rostok          2           0
+Lipsk           3           0
+Praga           0           4
+Brno            9           0
+Bratyslawa      4           0
+Koszyce         4           0
+Budapeszt       8           0;
+end;
