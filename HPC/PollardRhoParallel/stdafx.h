@@ -7,8 +7,6 @@
 
 #include "targetver.h"
 
-#include <stdio.h>
-#include <tchar.h>
 #include <iostream>
 #include <NTL/ZZ.h>
 #include <omp.h>

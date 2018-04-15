@@ -23,7 +23,7 @@
     <ProjectGuid>{55735D85-049D-4FD6-A100-D2E73EF09D95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>PollardRhoParallel</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -121,7 +121,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Git\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kamil.sikorski\Documents\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
       <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>

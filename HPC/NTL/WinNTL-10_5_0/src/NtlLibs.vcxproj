@@ -108,13 +108,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Git\Master\HPC\NTL\WinNTL-10_5_0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kamil.sikorski\Documents\Master\HPC\NTL\WinNTL-10_5_0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <WarningLevel>Level3</WarningLevel>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Git\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kamil.sikorski\Documents\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

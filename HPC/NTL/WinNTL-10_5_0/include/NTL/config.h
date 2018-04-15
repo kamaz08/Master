@@ -99,7 +99,7 @@ using the configure script.
 
 #endif
 
-#if 0
+#if 1
 #define NTL_THREADS
 
 /* Set if you want to compile NTL as a thread-safe library.
@@ -118,7 +118,7 @@ using the configure script.
 
 #endif
 
-#if 0
+#if 1
 #define NTL_THREAD_BOOST
 
 /* Set if you want to compile NTL to exploit threads internally.
@@ -175,7 +175,7 @@ using the configure script.
  * Set this flag if you want to enable C++11 features within NTL.
  */
 
-#elif 0
+#elif 1
 #define NTL_STD_CXX14
 
 /*
