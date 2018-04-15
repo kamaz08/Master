@@ -1,0 +1,54 @@
+﻿@model Krypto.Controllers.L2Krypto
+@{
+    Layout = null;
+}
+
+
+@for (int i = 0; i < Model.CipherTextList.Count(); i++)
+{
+
+    @Html.Partial("KryptoLine", i)
+}
+
+<script>
+    var model = @Html.Raw(Json.Encode(Model));
+    var textList = [];
+    var cipherList = [];
+    var tempKey = [];
+    for (var i = 0; i < model.CipherTextList.length; i++) {
+        textList.push(document.getElementById("text-" + i));
+        cipherList.push(document.getElementById("cipher-" + i));
+    }
+    for (var i = 0; i < model.Key.length; i++) {
+        tempKey.push(model.Key[i]);
+    }
+
+    var ParseKey = function(key, cipher, value){
+        var result = "";
+        for (var i = 0; ((value == null && i < cipher.length) || (value != null && i < value && i<cipher.length)); i++) {
+            result += String.fromCharCode(cipher[i] ^ key[i]);
+        }
+        return result;
+    }
+
+
+    var start = function() {
+        for (var i = 0; i < textList.length; i++) {
+            cipherList[i].value = ParseKey(model.Key, model.CipherTextList[i], null);
+        }
+    }
+    start();
+    var KeyChange = function (inp) {
+        var id = parseInt(inp.id.substring(5, 7));
+        for (var i = 0; i < inp.value.length; i++) {
+            tempKey[i] = inp.value.charCodeAt(i) ^ model.CipherTextList[id][i];
+        }
+        for (var i = 0; i < textList.length; i++) {
+            var result = "";
+            textList[i].value = ParseKey(tempKey, model.CipherTextList[i], inp.value.length);
+        }
+
+
+    }
+//The clock struck nine when I did send the nurse; In half an hour she promised to return. Perchance she cannot meet him: that's not so. O, she is lame! love's heralds should be thoughts,
+</script>
