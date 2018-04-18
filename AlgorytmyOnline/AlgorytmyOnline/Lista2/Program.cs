@@ -45,6 +45,8 @@ namespace Lista2
             var graph = new GraphGenerator(1000,600);
             var Listk = new List<int> { 10, 9, 8, 7, 6, 5 };
 
+            Listk = Listk.Select(x => n / x).Distinct().ToList();
+
             var fifol = new List<double>();
             var fwfl = new List<double>();
             var lrul = new List<double>();
@@ -54,18 +56,20 @@ namespace Lista2
 
             Listk.ForEach(k =>
             {
-                var fifo = new FIFOCache(n / k);
-                var fwf = new FWFCachecs(n / k);
-                var lru = new LRUCache(n / k);
-                var lfu = new LFUCache(n / k);
-                var rand = new RandCache(n / k);
-                var rma = new RMACache(n / k);
+
 
                 int fifoc, fwfc, lruc, lfuc, randc, rmac;
                 fifoc = fwfc = lruc = lfuc = randc = rmac = 0;
 
                 for (int j = 0; j < 100; j++)
                 {
+                    var fifo = new FIFOCache(k);
+                    var fwf = new FWFCachecs(k);
+                    var lru = new LRUCache(k);
+                    var lfu = new LFUCache(k);
+                    var rand = new RandCache(k);
+                    var rma = new RMACache(k);
+
                     for (int i = 0; i < t; i++)
                     {
                         var x = schedule.GetNextNumber();
@@ -84,7 +88,7 @@ namespace Lista2
                 randl.Add(randc / 100);
                 rmal.Add(rmac / 100);
             });
-            var kk = Listk.Select(x =>(double) (n / x)).ToList();
+            var kk = Listk.Select(x =>(double) x).ToList();
             graph.AddSeries($"{scheduleName}_FIFO_", System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line, kk, fifol, Color.Red);
             graph.AddSeries($"{scheduleName}_FWF_", System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line, kk, fwfl, Color.Blue);
             graph.AddSeries($"{scheduleName}_LRU_", System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line, kk, lrul, Color.Black);
