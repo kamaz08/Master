@@ -35,6 +35,8 @@ namespace Lista2.Hash
         }
     }
 
+
+
     public class Md5Function : HashFunctionAbstract
     {
         MD5 _md5;

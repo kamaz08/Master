@@ -9,7 +9,8 @@ namespace Lista2.Hash
     public abstract class MultisetAbstract
     {
         protected List<List<int>> _multiSetList;
-        public MultisetAbstract()
+
+        protected MultisetAbstract()
         {
             _multiSetList = new List<List<int>>();
         }
@@ -38,7 +39,7 @@ namespace Lista2.Hash
     {
         public BadMultiset(int begin, int end) : base()
         {
-            for (int i = begin; i <= end; i++)
+            for (var i = begin; i <= end; i++)
                 _multiSetList.Add(Enumerable.Range(begin, i).ToList());
         }
     }
@@ -47,7 +48,7 @@ namespace Lista2.Hash
     {
         public StupidMultiset(int begin, int end) : base()
         {
-            for (int i = begin; i <= end; i++)
+            for (var i = begin; i <= end; i++)
             {
                 var rand = new Random();
                 var list = Enumerable.Range(((begin + i - 1) * (i - 1)) / 2, i).ToList().Select(x => x * rand.Next());

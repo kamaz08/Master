@@ -1,5 +1,4 @@
 ﻿using Lista2;
-using Lista2.Core;
 using Lista2.Model;
 using System;
 using System.Collections.Generic;

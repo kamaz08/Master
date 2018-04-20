@@ -60,9 +60,12 @@
     <Compile Include="HashModel.cs" />
     <Compile Include="Hash\HashEnum.cs" />
     <Compile Include="Hash\HashFunction.cs" />
-    <Compile Include="Hash\HashGenerator.cs" />
-    <Compile Include="ItemDouble.cs" />
-    <Compile Include="KMin.cs" />
+    <Compile Include="Hash\HashFunctionByte.cs" />
+    <Compile Include="Hash\HyperLogLog.cs" />
+    <Compile Include="Hash\KMin.cs" />
+    <Compile Include="List\Lista2.cs" />
+    <Compile Include="List\Lista3cs.cs" />
+    <Compile Include="Model\ItemDouble.cs" />
     <Compile Include="Hash\Multiset.cs" />
     <Compile Include="Migrations\201803310950553_InitialCreate.cs" />
     <Compile Include="Migrations\201803310950553_InitialCreate.Designer.cs">
@@ -73,6 +76,8 @@
       <DependentUpon>201803311222356_changehashmodel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\EstimationModel.cs" />
+    <Compile Include="Model\GraphModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

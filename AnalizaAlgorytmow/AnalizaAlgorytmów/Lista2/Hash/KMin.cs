@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Authentication;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
-using System.Windows.Forms.DataVisualization.Charting;
+using Lista2.Model;
 
 namespace Lista2.Hash
 {
-    public class HashGenerator
+    public class KMin
     {
         public Dictionary<int, List<double>> Kmin(int k, HashFunctionAbstract func, MultisetAbstract set)
         {
