@@ -46,9 +46,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AesTest.cs" />
+    <Compile Include="MerkleHellmanTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +60,10 @@
     <ProjectReference Include="..\L3\L3.csproj">
       <Project>{7EAFC502-5C7C-48D9-8480-05EDF3BA2DA5}</Project>
       <Name>L3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L4\L4.csproj">
+      <Project>{8f4959f7-7dba-48bd-8efd-ff0d14678997}</Project>
+      <Name>L4</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
