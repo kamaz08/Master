@@ -17,10 +17,10 @@ namespace Lista2.List
         private Dictionary<int, Dictionary<decimal, int>> _dictHyper;
         public Lista3cs()
         {
-            int b = 6;
+            //int b = 6;
             set = new GoodMultiset(1, 10000);
-            var hash = new Sha256ByteFunction();
-            _dictHyper = HyperLogLog.Execute(b, hash, set);
+            //var hash = new Sha256ByteFunction();
+            //_dictHyper = HyperLogLog.Execute(b, hash, set);
         }
         public void TestSHA()
         {
@@ -60,7 +60,7 @@ namespace Lista2.List
             var hash = new DekFunctionByte();
             var dictHyper = HyperLogLog.Execute(4, hash, set);
 
-            var list = new[] { 4 }.ToList();
+            var list = new[] { 4,5,6 }.ToList();
             list.ForEach(b =>
             {
                 var res = HyperLogLog.GetResult(dictHyper, b);

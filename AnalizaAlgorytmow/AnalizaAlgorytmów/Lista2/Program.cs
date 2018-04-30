@@ -20,9 +20,9 @@ namespace Lista2
         {
             var pr = new Lista3cs();
             //pr.TestSHA();
-            pr.Campare();
+            //pr.Campare();
            // pr.TestMD5();
-           // pr.TestDek();
+            pr.TestDek();
         }
 
        

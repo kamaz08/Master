@@ -57,9 +57,9 @@ namespace Lista2.Hash
             ulong  hash = (ulong)bytes.Length;
             int i = 0;
 
-            for (i = 0; i < bytes.Length; i++)
+            for (i = 0; i < 8; i++)
             {
-                hash = ((hash << 5) ^ (hash >> 27)) ^ (bytes[i]);
+                hash = ((hash << 5) ^ (hash >> 27)) ^ (bytes[i%bytes.Length]);
             }
             return new BitArray(BitConverter.GetBytes(hash));
         }

@@ -39,9 +39,11 @@ namespace Lista2.Hash
             decimal v = 0;
             for (var i = 0; i < b; i++)
                 if (value[i]) v += (decimal)Math.Pow(2, i);
+
             var m = b;
             while (value.Length > m && !value[m]) m++;
             m -= b - 1;
+
             if (dict.ContainsKey(v))
                 dict[v] = dict[v] < m ? m : dict[v];
             else
@@ -94,7 +96,6 @@ namespace Lista2.Hash
                     Key = i,
                     Value = GetForK(b, dict[i])
                 });
-
             return result;
         }
 
