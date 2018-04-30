@@ -28,7 +28,7 @@ namespace UnitTest
             if (BigInteger.GreatestCommonDivisor(krypto.Q, krypto.R) > 1) Assert.Fail();
 
 
-            for(int i =0; i< krypto.PrivateKey.Count(); i++)
+            for (int i = 0; i < krypto.PrivateKey.Count(); i++)
             {
                 Assert.AreEqual(krypto.PublicKey[i], krypto.PrivateKey[i] * krypto.R % krypto.Q);
             }
@@ -65,6 +65,39 @@ namespace UnitTest
             var plain = MerkleHellman.Decrypt(krypto.PrivateKey, krypto.R, krypto.Q, new List<BigInteger> { 1129 })[0];
 
             Assert.AreEqual(plain, 0b01100001);
+
+        }
+
+        [TestMethod]
+        public void BlockTest()
+        {
+            var gen = new MerkleHellmanGenerator(10);
+            var krypto = gen.Generate(8);
+
+            var text = new byte[] { 0b01111101, 0b00001111, 0b01010101, 0b10111010 };
+            var ciipher = MerkleHellman.Encrypt(krypto.PublicKey, text);
+            var plain = MerkleHellman.Decrypt(krypto.PrivateKey, krypto.R, krypto.Q, ciipher);
+
+            for(int i =0; i< text.Count(); i++)
+            {
+                Assert.AreEqual(text[i], plain[i]);
+            }
+        }
+
+        [TestMethod]
+        public void BigKeyTest()
+        {
+            var gen = new MerkleHellmanGenerator(10);
+            var krypto = gen.Generate(32);
+
+            var text = new byte[] { 0b01111101, 0b00001111, 0b01010101, 0b10111010 };
+            var ciipher = MerkleHellman.Encrypt(krypto.PublicKey, text);
+            var plain = MerkleHellman.Decrypt(krypto.PrivateKey, krypto.R, krypto.Q, ciipher);
+
+            for (int i = 0; i < text.Count(); i++)
+            {
+                Assert.AreEqual(text[i], plain[i]);
+            }
 
         }
     }

@@ -32,7 +32,7 @@ namespace L4.Crypto
 
         public static Byte[] Decrypt(List<BigInteger> key, BigInteger r, BigInteger q, List<BigInteger> cipher)
         {
-            var r1 = BigInteger.ModPow(r, q - 2, q);
+            var r1 = modInverse(r, q);
             var cipher2 = cipher.Select(x => (x * r1) % q).ToList();
             var blocksize = key.Count();
             var key2 = key.Select(x => x).ToList();
@@ -68,6 +68,23 @@ namespace L4.Crypto
                     result.Add(res);
             });
             return result.ToArray();
+        }
+
+        private static BigInteger modInverse(BigInteger a, BigInteger n)
+        {
+            BigInteger i = n, v = 0, d = 1;
+            while (a > 0)
+            {
+                BigInteger t = i / a, x = a;
+                a = i % x;
+                i = x;
+                x = d;
+                d = v - t * x;
+                v = x;
+            }
+            v %= n;
+            if (v < 0) v = (v + n) % n;
+            return v;
         }
     }
 }
