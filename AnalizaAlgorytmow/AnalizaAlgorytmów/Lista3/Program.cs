@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Lista3.Dijkstra;
+﻿using Lista3.Dijkstra;
+using Lista3.IndependentSet;
 
 namespace Lista3
 {
@@ -12,14 +7,28 @@ namespace Lista3
     {
         static void Main(string[] args)
         {
-            var a = new DijkstraAlg().GetDictionary(3);
 
-            var he = a.Select(x => x.Value).Where(x => x.NextSteps.Count() != 1);
-            var a1 = he.SelectMany(x => x.NextSteps);
-            var a2 = a1.Where(x => (!a[x].Visited)).OrderBy(x=>x).Distinct();
+            IndependentSet();
+        }
 
-            CheckDijkstra.Check(a);
 
+        public static void Dijkstra()
+        {
+            var test = new DijkstraTab(9);
+            var a = test.Caluculate();
+        }
+
+        public static void IndependentSet()
+        {
+            var graph = new Graph(50, 4);
+
+            graph.WriteGraph();
+            graph.IndependentSet();
+           // graph.
         }
     }
 }
+
+// 9 - 98 ~ 25 minut
+// 8 - 75 - < 1 minuta
+// 7 - 55 - ;) 

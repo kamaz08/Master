@@ -34,7 +34,7 @@ namespace Lista3.Dijkstra
         {
             var result = new HashSet<int>();
 
-            if (State[0] == State[State.Count - 1])
+            if (State[0] == State[State.Count() - 1])
             {
                 var temp = State.Select(x => x).ToList();
                 temp[0] = (temp[0] + 1) % (temp.Count() + 1);
@@ -46,7 +46,7 @@ namespace Lista3.Dijkstra
                 if (State[i] != State[i - 1])
                 {
                     var temp = State.Select(x => x).ToList();
-                    temp[i] = (temp[i] + 1) % (temp.Count() + 1);
+                    temp[i] = State[i - 1];
                     result.Add(GetValue(temp));
                 }
             }

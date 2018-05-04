@@ -30,7 +30,7 @@ namespace Lista3.Dijkstra
                         if(visitedSet.Contains(ne) || next.Contains(ne) || dict[ne].Visited) continue;
                         next.Add(ne);
                     }
-                    next.Remove(next[0]);
+                    next = next.Skip(1).ToList();
                 }
                 item.Value.Visited = true;
             }

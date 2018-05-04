@@ -46,6 +46,10 @@
     <Compile Include="Dijkstra\CheckDijkstra.cs" />
     <Compile Include="Dijkstra\DijkstraAlg.cs" />
     <Compile Include="Dijkstra\DijkstraModel.cs" />
+    <Compile Include="Dijkstra\DijkstraNextStep.cs" />
+    <Compile Include="Dijkstra\DijkstraTab.cs" />
+    <Compile Include="IndependentSet\Graph.cs" />
+    <Compile Include="IndependentSet\IndependentSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
