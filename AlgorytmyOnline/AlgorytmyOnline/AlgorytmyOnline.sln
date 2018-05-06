@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorytmyOnline", "Algorytm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lista2", "Lista2\Lista2.csproj", "{7D9A30A3-B9C7-499F-8A9B-0C6837B575D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L3", "L3\L3.csproj", "{A7B8843F-923A-48DE-B1E2-F6CB812A4AFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7D9A30A3-B9C7-499F-8A9B-0C6837B575D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D9A30A3-B9C7-499F-8A9B-0C6837B575D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D9A30A3-B9C7-499F-8A9B-0C6837B575D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7B8843F-923A-48DE-B1E2-F6CB812A4AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7B8843F-923A-48DE-B1E2-F6CB812A4AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7B8843F-923A-48DE-B1E2-F6CB812A4AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7B8843F-923A-48DE-B1E2-F6CB812A4AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
