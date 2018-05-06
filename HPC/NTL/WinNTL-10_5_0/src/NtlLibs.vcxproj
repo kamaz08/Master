@@ -114,7 +114,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\kamil.sikorski\Documents\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Git\Master\HPC\NTL\WinNTL-10_5_0\include;C:\Users\kamil.sikorski\Documents\Master\HPC\NTL\WinNTL-10_5_0\include</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
