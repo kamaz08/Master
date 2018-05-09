@@ -83,12 +83,32 @@ namespace L5
             return true;
         }
 
-
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                             .Where(x => x % 2 == 0)
+                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                             .ToArray();
+        }
 
 
         static void Main(string[] args)
         {
+            string one = "d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70";
+            string two = "d131dd02c5e6eec4693d9a0698aff95c2fcab50712467eab4004583eb8fb7f8955ad340609f4b30283e4888325f1415a085125e8f7cdc99fd91dbd7280373c5bd8823e3156348f5bae6dacd436c919c6dd53e23487da03fd02396306d248cda0e99f33420f577ee8ce54b67080280d1ec69821bcb6a8839396f965ab6ff72a70";
+
+            var a = StringToByteArray(one);
+            var b = StringToByteArray(two);
+
+            var a1 = MD5Func(a);
+            var b1 = MD5Func(b);
+
+            var wynik = Check(a1, b1);
+
             byte[] file;
+
+            File.WriteAllBytes("plik1", a);
+            File.WriteAllBytes("plik2", b);
 
             using (var stream = File.OpenRead("grade2.txt"))
                 file = ReadFully(stream);
