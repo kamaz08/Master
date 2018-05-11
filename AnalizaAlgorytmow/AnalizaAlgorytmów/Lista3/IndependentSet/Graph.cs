@@ -10,6 +10,7 @@ namespace Lista3.IndependentSet
     {
         public bool MSI { get; set; }
         public List<Verticle> Neighbours { get; set; }
+
         public int Id { get; set; }
         public Verticle(int id)
         {
@@ -60,16 +61,23 @@ namespace Lista3.IndependentSet
             });
         }
 
+        public void Random()
+        {
+            _verticleList.ForEach(x=>x.MSI = _random.Next() % 2 == 0);
+        }
+
 
         public void IndependentSet()
         {
             int count = 0, n = _verticleList.Count();
             while (count <= n)
             {
+                Console.Out.WriteLine();
                 _verticleList.ForEach(v1 =>
                 {
                     if ((v1.MSI && v1.Neighbours.Any(x => x.MSI)) || (v1.MSI == false && v1.Neighbours.All(x=> x.MSI==false)))
                     {
+                        Console.Out.WriteLine($"{v1.Id} - zmiana na {!v1.MSI} ");
                         v1.MSI = !v1.MSI;
                         count = 0;
                     }

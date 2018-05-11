@@ -7,7 +7,7 @@ namespace Lista3
     {
         static void Main(string[] args)
         {
-
+            //Dijkstra();
             IndependentSet();
         }
 
@@ -20,9 +20,10 @@ namespace Lista3
 
         public static void IndependentSet()
         {
-            var graph = new Graph(50, 4);
+            var graph = new Graph(50, 5);
 
             graph.WriteGraph();
+            graph.Random();
             graph.IndependentSet();
            // graph.
         }
