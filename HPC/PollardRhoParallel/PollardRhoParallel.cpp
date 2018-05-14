@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "Pollard.h"
-
+#include <set>
 
 using namespace std;
 using namespace NTL;
