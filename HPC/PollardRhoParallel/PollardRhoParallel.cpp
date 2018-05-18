@@ -43,6 +43,7 @@ int main()
 	for (i = 0; i < nthreads; i++) {
 		polard[i] = new Pollard(p, g, h, q, score);
 	}
+	
 #pragma omp parallel for private(i) num_threads(nthreads)
 	for (i = 0; i < nthreads; i++) {
 		polard[i]->Finder(aTab[i], bTab[i], xTab[i]);

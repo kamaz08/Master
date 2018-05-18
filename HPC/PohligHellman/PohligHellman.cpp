@@ -4,6 +4,7 @@
 #include <NTL/ZZ_pXFactoring.h>
 #include <NTL/RR.h>
 #include <set>
+#include <omp.h>
 
 
 using namespace NTL;
@@ -237,6 +238,7 @@ int main() {
 
 	cout << "Test:" << endl << "GCD(g,p) = " << GCD(g, p) << endl;
 	cout << "g^(p-1) % p = " << PowerMod(g, p1, p) << endl;
+#pragma paraller for shared(p,q,p1,ord,h, wspo)
 	for (int i = 1; i < number; i++) {
 		std::set<Score*, ScoreComp> items;
 		ZZ oldg = ZZ(0);
@@ -322,6 +324,7 @@ int main() {
 				cout << "lololo" << endl;
 				continue;
 			}
+
 			tempg = InvMod(PowerMod(newg, size, p), p);
 			ZZ temph = MulMod(newh, tempg, p);
 			for (ZZ zz = ZZ(1); zz <= size; zz++) {
@@ -340,10 +343,12 @@ int main() {
 				temph = MulMod(temph, tempg, p);
 			}
 			delete temp;
-			if (PowerMod(newg, wspo[i].tab[j], p) != newh) {
-				cout << "niestety nie " << endl;
+#pragma omp critical
+			{
+				if (PowerMod(newg, wspo[i].tab[j], p) != newh) {
+					cout << "niestety nie " << endl;
+				}
 			}
-
 			//cout << wspo[i].tab[j] << endl << PowerMod(newg, wspo[i].tab[j], p) << endl;
 
 		}
@@ -383,7 +388,7 @@ int main() {
 	//cout <<endl<< "test"<<endl;
 	//cout << MulMod(xxx,1,mmm) <<endl << endl; 
 	//cout <<endl<< "test 2 "<<endl<<xxx - x<<endl;
-	cout << endl << endl << x << endl;
+	cout << endl << endl << x << endl << endl << PowerMod(PowerMod(g, wspo[0].a, p), x, p) << endl << endl << PowerMod(h, wspo[0].a, p) << endl;
 	//for (int i = 0; i < p / mmm; i++) {
 	//	if (PowerMod(g, i * mmm + (xx % mmm), p) == h) {
 	//		cout << "solution x = " << i * mmm + x << endl;
