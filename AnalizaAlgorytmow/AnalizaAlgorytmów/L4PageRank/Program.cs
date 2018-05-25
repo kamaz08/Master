@@ -16,13 +16,13 @@ namespace L4PageRank
     {
         static void Main(string[] args)
         {
-            //Zadanie1();
-           // Zadanie2();
+            // Zadanie1();
+            Zadanie2();
             //Zadanie3();
-            Zadanie4();
+            //Zadanie4();
 
         }
-
+        // 5 13 21
 
 
         public static void Zadanie4()
@@ -83,10 +83,14 @@ namespace L4PageRank
                 Console.WriteLine($"Alfa = {a}");
                 for (int k = 0; k < 25; k++)
                 {
-                    var mac = ((1.0 - a) * Ng + a * (1.0 / n));
-                    mac = mac.Power(k + 1);
+                    var mac = (((1.0 - a) * Ng) + (a * (1.0 / n)));
+                    var test = mac;
 
-                    var tempPi = pi * mac;
+                    for (int i = 0; i < k; i++)
+                        test = mac * test;
+                    //mac = mac.Power(k + 1);
+
+                    var tempPi =pi * test;
                     l0.Add(tempPi[0]);
                     l1.Add(tempPi[1]);
                     l2.Add(tempPi[2]);
@@ -139,11 +143,24 @@ namespace L4PageRank
             Pg[3, 1] = 0.1;
             Pg[3, 2] = 0.0;
             Pg[3, 3] = 0.0;
+
+            for (int i1 = 0; i1 < Pg.RowCount; i1++)
+            {
+                for (int j1 = 0; j1 < Pg.RowCount; j1++)
+                {
+                    Console.Write($"{Math.Round(Pg[i1, j1], 4)}\t");
+                }
+                Console.WriteLine();
+            }
+
+
             var G = Pg;
+            
             for (int i = 0; i < 10; i++)
             {
                 G = G * G;
             }
+            /*
             Console.WriteLine("\n\n 2");
             Console.WriteLine("Rozkład");
             for (int i = 0; i < G.RowCount; i++)
@@ -167,26 +184,28 @@ namespace L4PageRank
                 G2 = G2 * G2;
             }
             Console.WriteLine($"x -> 3 po 128 krokach = {(G2[0, 3] +G2[1, 3] + G2[2,3] + G2[3,3]) / 4.0}");
-
-
-
+            */
+            var G2 = Pg;
+            var poczatkowe = Vector<double>.Build.Dense(n, 0.0);
+            poczatkowe[0] = 1.0;
             var epss = new[] {0.1, 0.01, 0.001}.ToList();
             epss.ForEach(eps =>
             {
                 G2 = Pg;
                 bool cont = true;
-                for (int i = 0; cont; i++)
+                for (int i = 2; cont; i++)
                 {
                     G2 = G2 * Pg;
-                    for (int j = 1; j < 4; j++)
+                    var G3 =  poczatkowe * G2;
+                    for (int j = 0; j < 4; j++)
                     {
-                        if (Math.Abs(G[0, j] - G2[0, j]) < eps)
-                        {
-                            Console.WriteLine($"Eps {eps} dla 0 -> {j} po {i+1} krokach");
-                            cont = false;
-                            break;
-                        }
+                        cont = false;
+                        if (Math.Abs(G[0, j] - G3[j]) > eps)
+                            cont = true;
                     }
+
+                    if (!cont)
+                        Console.WriteLine($" eps {eps} = {i+1} ");
                 }
 
             });
