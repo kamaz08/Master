@@ -12,21 +12,81 @@ using MathNet.Numerics.LinearAlgebra.Complex;
 
 namespace L4PageRank
 {
+    public class Graph
+    {
+        public double X { get; set; }
+        public double Step { get; set; }
+        public double Hold { get; set; }
+    }
     class Program
     {
         static void Main(string[] args)
         {
             // Zadanie1();
-            Zadanie2();
+            //Zadanie2();
             //Zadanie3();
-            //Zadanie4();
+            Zadanie4();
 
         }
         // 5 13 21
 
+        public static void Zadanie4cel(double mi, double la, int test)
+        {
+            var algo = new ProstaKolejka();
+            var results = new List<List<Graph>>();
+
+            for(int i =0; i<test; i++)
+            {
+                results.Add(new List<Graph>());
+                var dane = algo.Test(mi, la);
+                
+                for(int j = 0; j < dane.Count; j++)
+                {
+                    results[i].Add(new Graph
+                    {
+                        X = j,
+                        Step = dane[j].Steps.Count == 0 ? 10000 : dane[j].Steps.Average(),
+                        Hold = dane[j].Count
+                    });
+                }
+            }
+
+            var max = results.Max(x => x.Count);
+
+            var res = new List<Graph>();
+            for (int i = 0; i < max; i++)
+            {
+                res.Add(new Graph
+                {
+                    X = i
+                });
+                for (int j = 0; j < test; j++)
+                {
+                    if (results[j].Count > i)
+                    {
+                        res[i].Step += results[j][i].Step;
+                        res[i].Hold += results[j][i].Hold;
+                    }
+                }
+                res[i].Step /= test;
+                res[i].Hold /= test;
+            }
+            var graph = new GraphGenerator(600, 800);
+            graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, res.Count).Select(x => (double)x).ToList(), res.Select(x=>x.Hold).ToList(), Color.Red);
+            graph.AddSeries($"series{1}", SeriesChartType.Line, Enumerable.Range(0, res.Count).Select(x => (double)x).ToList(), res.Select(x => x.Step).ToList(), Color.Green);
+            graph.SaveGraph($"prosta kolejka mi{mi} lambda{la}");
+        }
+
+
 
         public static void Zadanie4()
         {
+            var test = 1000;
+            Zadanie4cel(0.1, 0.2, test);
+            Zadanie4cel(0.2, 0.2, test);
+            Zadanie4cel(0.2, 0.1, test);
+
+            /*
             var algo = new ProstaKolejka();
             var steps0 = new List<double>();
             var steps1 = new List<double>();
@@ -35,40 +95,67 @@ namespace L4PageRank
             var hold0 = new List<double>();
             var hold1 = new List<double>();
             var hold2 = new List<double>();
-            for (int i = 0; i < 100; i++)
-            {
-                var t1 = algo.Test(0.2, 0.1);
-                var t2 = algo.Test(0.2, 0.2);
-                var t3 = algo.Test(0.1, 0.2);
-                steps0.Add(t1.Average(x => x.Steps.Sum()));
-                steps1.Add(t2.Average(x => x.Steps.Sum()));
-                steps2.Add(t3.Average(x => x.Steps.Sum()));
-                hold0.Add(t1.Average(x => x.Count));
-                hold1.Add(t2.Average(x => x.Count));
-                hold2.Add(t3.Average(x => x.Count));
-            }
-           
+            var t1 = algo.Test(0.2, 0.1);
+            var t2 = algo.Test(0.2, 0.2);
+            var t3 = algo.Test(0.1, 0.2);
+
+            steps0 = t1.Select(x => (double)x.Steps.Average()).ToList();
+            steps1 = t2.Select(x => (double)x.Steps.Average()).ToList();
+            steps2 = t3.Select(x => (double)x.Steps.Average()).ToList();
+
+            hold0 = t1.Select(x => (double)x.Count).ToList();
+            hold1 = t2.Select(x => (double)x.Count).ToList();
+            hold2 = t3.Select(x => (double)x.Count).ToList();
 
 
-            Console.WriteLine($@"Srednia ilosc krokow 0.2 0.1 {steps0.Average()}");
-            Console.WriteLine($@"Srednia ilosc krokow 0.2 0.2 {steps1.Average()}");
-            Console.WriteLine($@"Srednia ilosc krokow 0.1 0.2 {steps2.Average()}");
 
-            Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.2 0.1 {hold0.Average()}");
-            Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.2 0.2 {hold1.Average()}");
-            Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.1 0.2 {hold2.Average()}");
+            var graph = new GraphGenerator(600, 800);
+            graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, hold0.Count).Select(x => (double)x).ToList(), hold0, Color.Red);
+            graph.AddSeries($"series{1}", SeriesChartType.Line, Enumerable.Range(0, steps0.Count).Select(x => (double)x).ToList(), steps0, Color.Green);
+            graph.SaveGraph($"zadanko {0}");
 
+            graph = new GraphGenerator(600, 800);
+            graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, hold1.Count).Select(x => (double)x).ToList(), hold1, Color.Red);
+            graph.AddSeries($"series{1}", SeriesChartType.Line, Enumerable.Range(0, steps1.Count).Select(x => (double)x).ToList(), steps1, Color.Green);
+            graph.SaveGraph($"zadanko {1}");
+
+            graph = new GraphGenerator(600, 800);
+            graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, hold2.Count).Select(x => (double)x).ToList(), hold2, Color.Red);
+            graph.AddSeries($"series{1}", SeriesChartType.Line, Enumerable.Range(0, steps2.Count).Select(x => (double)x).ToList(), steps2, Color.Green);
+            graph.SaveGraph($"zadanko {2}");
+
+            //Console.WriteLine($@"Srednia ilosc krokow 0.2 0.1 {steps0.Average()}");
+            //Console.WriteLine($@"Srednia ilosc krokow 0.2 0.2 {steps1.Average()}");
+            //Console.WriteLine($@"Srednia ilosc krokow 0.1 0.2 {steps2.Average()}");
+
+            //Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.2 0.1 {hold0.Average()}");
+            //Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.2 0.2 {hold1.Average()}");
+            //Console.WriteLine($@"Srednie przebywanie w jednym stanie  0.1 0.2 {hold2.Average()}");
+            */
 
         }
 
         public static void Zadanie3()
         {
             var n = 5;
-            var Ng = Matrix<double>.Build.Dense(n, n, 0);
+            var Ng = Matrix<double>.Build.Dense(n, n, 0.0);
+
+
             Ng[0, 1] = Ng[0, 2] = 0.5;
             Ng[2, 1] = Ng[2, 3] = Ng[2, 4] = 1.0 / 3.0;
-            Ng[1, 3] = Ng[3, 1] = 1;
+            Ng[1, 3] = Ng[3, 0] = 1.0;
             Ng[4, 0] = Ng[4, 1] = Ng[4, 2] = Ng[4, 3] = Ng[4, 4] = 1.0 / n;
+
+            for (int i = 0; i < Ng.RowCount; i++)
+            {
+                for (int j = 0; j < Ng.RowCount; j++)
+                {
+                    Console.Write($"{Math.Round(Ng[i, j], 4)}\t");
+                }
+                Console.WriteLine();
+            }
+
+
             var pi = Vector<double>.Build.Dense(n, 1.0 / n);
             //var tempPi = pi;
             var alfa = new[] {0.0, 0.25, 0.5, 0.75, 0.85, 1.0}.ToList();
@@ -81,27 +168,18 @@ namespace L4PageRank
                 var l3 = new List<double>();
                 var l4 = new List<double>();
                 Console.WriteLine($"Alfa = {a}");
+                var mac = (((1.0 - a) * Ng) + (a * (1.0 / n)));
+                var temp = mac.Clone();
+
                 for (int k = 0; k < 25; k++)
-                {
-                    var mac = (((1.0 - a) * Ng) + (a * (1.0 / n)));
-                    var test = mac;
-
-                    for (int i = 0; i < k; i++)
-                        test = mac * test;
-                    //mac = mac.Power(k + 1);
-
-                    var tempPi =pi * test;
+                { 
+                    var tempPi = temp.Transpose() * pi;
                     l0.Add(tempPi[0]);
                     l1.Add(tempPi[1]);
                     l2.Add(tempPi[2]);
                     l3.Add(tempPi[3]);
                     l4.Add(tempPi[4]);
-                    Console.WriteLine($"Wartosci dla i = {k+1}");
-                    for (int j = 0; j < n; j++)
-                    {
-                        Console.Write($"{Math.Round(tempPi[j],4)}\t");
-                    }
-                    Console.WriteLine();
+                    temp = mac * temp;
                 }
 
                 var graph = new GraphGenerator(600, 800);
@@ -112,10 +190,6 @@ namespace L4PageRank
                 graph.AddSeries($"series{4}", SeriesChartType.Line, Enumerable.Range(1, 25).Select(x => (double)x).ToList(), l4, Color.Black);
                 graph.SaveGraph($"zadanko alpha{a}");
             });
-
-
-
-
         }
 
 

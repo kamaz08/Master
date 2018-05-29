@@ -24,10 +24,8 @@ namespace L4PageRank
 
         public void Enter(int i)
         {
-            if (LastStep + 1 != i)
-               Steps.Add(i - LastStep);
-            else
-                Count++;
+            Steps.Add(i - LastStep);
+            Count++;
             LastStep = i;
         }
     }
