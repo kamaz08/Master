@@ -52,7 +52,7 @@ namespace L4PageRank
                     if (state > 0)
                         state--;
                 }
-                else if (prop - a < b)
+                else // if (prop - a < b)
                 {
                     state++;
                     if(que.Count <= state)

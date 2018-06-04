@@ -72,7 +72,7 @@ namespace L4PageRank
                 res[i].Hold /= test;
             }
             var graph = new GraphGenerator(600, 800);
-            graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, res.Count).Select(x => (double)x).ToList(), res.Select(x=>x.Hold).ToList(), Color.Red);
+            //graph.AddSeries($"series{0}", SeriesChartType.Line, Enumerable.Range(0, res.Count).Select(x => (double)x).ToList(), res.Select(x=>x.Hold).ToList(), Color.Red);
             graph.AddSeries($"series{1}", SeriesChartType.Line, Enumerable.Range(0, res.Count).Select(x => (double)x).ToList(), res.Select(x => x.Step).ToList(), Color.Green);
             graph.SaveGraph($"prosta kolejka mi{mi} lambda{la}");
         }
@@ -82,9 +82,9 @@ namespace L4PageRank
         public static void Zadanie4()
         {
             var test = 1000;
-            Zadanie4cel(0.1, 0.2, test);
-            Zadanie4cel(0.2, 0.2, test);
-            Zadanie4cel(0.2, 0.1, test);
+            //Zadanie4cel(0.333, 0.667, test);
+            //Zadanie4cel(0.5, 0.5, test);
+            Zadanie4cel(0.667, 0.333, test);
 
             /*
             var algo = new ProstaKolejka();
