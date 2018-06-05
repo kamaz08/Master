@@ -36,13 +36,14 @@ namespace L4.Algo
             for (int i = 0; i < 64; i++)
             {
                 var tempsum = list.Sum(x => _cost.GetCost(i, x));
-                tempsum += i == _current || isFirst ? 0 : (_cost.GetCost(i, _current) * _changeBaseCost);
+                //tempsum += i == _current || isFirst ? 0 : (_cost.GetCost(i, _current) * _changeBaseCost);
                 if (tempsum < minsum)
                 {
                     minsum = tempsum;
                     min = i;
                 }
             }
+            minsum += (_cost.GetCost(min, _current) * _changeBaseCost);
             _current = min;
             return minsum;
         }
