@@ -8,7 +8,7 @@ namespace L4.Algo
 {
     public class MoveToMinPageMigration : AbstractPageMigration
     {
-        public MoveToMinPageMigration(ICost cost) : this(0, 32, 64, cost) { }
+        public MoveToMinPageMigration(int current, ICost cost) : this(current, 32, 64, cost) { }
 
         public MoveToMinPageMigration(int current, int changeBaseCost, int size, ICost cost) : base(current, changeBaseCost, size, cost) { }
 

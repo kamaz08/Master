@@ -21,9 +21,12 @@ namespace Lista2.Schedule
         public override int GetNextNumber()
         {
             var x = _random.NextDouble();
-
+            double sum = 0;
             for (int i = 1; i <= _n; i++)
-                if (x >= 1.0 / (_hr * Math.Pow(i,2.0))) return i;
+            {
+                sum += 1.0 / (_hr * Math.Pow(i, 2.0));
+                if (x <= sum) return i;
+            }
             return _n;
         }
     }

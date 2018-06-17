@@ -9,7 +9,7 @@ namespace L4.Algo
     public class RandomPageMigration : AbstractPageMigration
     {
         private Random _random;
-        public RandomPageMigration(ICost cost) : this(0, 32, 64, cost, new Random()) { }
+        public RandomPageMigration(int current, ICost cost) : this(current, 32, 64, cost, new Random()) { }
 
         public RandomPageMigration(int current, int changeBaseCost, int size, ICost cost, Random random) : base(current, changeBaseCost, size, cost)
         {

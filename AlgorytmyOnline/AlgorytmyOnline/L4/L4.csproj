@@ -49,6 +49,7 @@
     <Compile Include="Algo\AbstractPageMigration.cs" />
     <Compile Include="Algo\Cost.cs" />
     <Compile Include="Algo\MoveToMinPageMigration.cs" />
+    <Compile Include="Algo\OfflinePageMigration.cs" />
     <Compile Include="Algo\RandomPageMigration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
