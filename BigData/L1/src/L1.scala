@@ -1,6 +1,9 @@
 package main.scala
 
 import Complex.Complex
+import Dzbanki.Dzbanki
+
+import scala.collection.mutable.ListBuffer
 
 object L1 {
   def gcd(x:Int, y:Int): Int = if (y == 0) x.abs else gcd(y, x%y)
@@ -20,6 +23,8 @@ object L1 {
     else if (n == 2) true
     else !(2 to n / 2).exists(x => n % x == 0)
   }
+
+
 
 
   def main(args:Array[String]) = {
@@ -60,6 +65,8 @@ object L1 {
     println(c1 - c2)
     println(c1 * c2)
     println(c1 / c2)
+
+    Dzbanki().Start(8,0,0, ListBuffer[Int]());
 
   }
 }
