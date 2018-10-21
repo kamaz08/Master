@@ -26,7 +26,7 @@ namespace Proba.L1
 
         protected void Swap(ref int a, ref int b)
         {
-            _swaps++;
+            _swaps+=2;
             int temp = a;
             a = b;
             b = temp;

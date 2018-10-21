@@ -12,7 +12,7 @@ namespace Proba
         {
             Console.WriteLine("Hello World!");
 
-            var result = new Tests().StartTest(20, 100, 10000, 10);
+            var result = new Tests().StartTest(100, 10, 10000, 10);
 
             var graph = new GraphGenerator();
             graph.AddSeries("quick", System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line, result.Item1.Select(x => (double) x.Key).ToList(), result.Item1.Select(x => x.Value.Item1).ToList(), Color.Red);

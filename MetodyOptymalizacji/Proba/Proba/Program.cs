@@ -10,7 +10,7 @@ namespace Proba
         {
             Console.WriteLine("Hello World!");
 
-            new Tests().StartTest(100, 1000, 10000, 100);
+            new Tests().StartTest(10, 10, 10000, 100);
 
 
         }
