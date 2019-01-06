@@ -42,7 +42,7 @@ namespace Proba.Graph
         public void SaveGraph(string fileName)
         {
             _chart.Invalidate();
-            _chart.SaveImage($"{fileName}.png", ChartImageFormat.Png);
+            _chart.SaveImage($"{fileName.Replace(':', '-')}.png", ChartImageFormat.Png);
         }
     }
 }
