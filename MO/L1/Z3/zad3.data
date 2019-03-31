@@ -1,0 +1,60 @@
+/*
+Kamil Sikorski
+221481
+*/
+
+data;
+
+set RodzajRopy := B1 B2;
+set PolProdukt := Benzyna Olej Destylat Resztki;
+set Produkt := PaliwaSilnikowe DomowePaliwaOlejowe CiezkiePaliwaOlejowe;
+
+param KosztRopy :=
+    B1 1300
+    B2 1500;
+
+param KosztDestylacji := 10;
+
+param KosztKrakowania := 20;
+
+param WydajnoscDestylacji : B1      B2 :=
+                Benzyna     0.15    0.10
+                Olej        0.40    0.35
+                Destylat    0.15    0.20
+                Resztki     0.15    0.25;
+
+param WydajnoscKrakowania : Benzyna Olej    Destylat    Resztki:=
+                Benzyna     0       0       0.5         0
+                Olej        0       0       0.2         0
+                Destylat    0       0       0           0
+                Resztki     0       0       0.06        0;
+
+param KosztProduktuDestylacja : PaliwaSilnikowe DomowePaliwaOlejowe CiezkiePaliwaOlejowe :=
+                    Benzyna     1               0                   0
+                    Olej        0               1                   1
+                    Destylat    0               0                   1
+                    Resztki     0               0                   1;
+
+param KosztProduktuKrakowanie :   PaliwaSilnikowe DomowePaliwaOlejowe CiezkiePaliwaOlejowe :=
+                        Benzyna   1               0                   0
+                        Olej      0               1                   0
+                        Destylat  0               0                   0
+                        Resztki   0               0                   1;
+
+param MinimumProduktu := 
+    PaliwaSilnikowe        200000
+    DomowePaliwaOlejowe    400000
+    CiezkiePaliwaOlejowe   250000;    
+
+param ZawartoscSiarkiDestylacja :=
+    B1  0.2
+    B2  1.2;
+
+param ZawartoscSiarkiKrakowanie :=
+    B1  0.3
+    B2  2.5;
+
+param MaxSiarki := 0.5;
+
+
+end;

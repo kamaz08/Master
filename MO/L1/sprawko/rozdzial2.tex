@@ -1,0 +1,75 @@
+\chapter{Zadanie 2}
+\thispagestyle{chapterBeginStyle}
+\label{rozdzial2}
+
+\section{Opis problemu}
+Zadanie polega na rozwiązaniu problemu niedoboru i nadmiaru dźwigów samojezdnych znajdujących się w jednych miejscach pracy. 
+Celem zadania jest ustalenie planu przemieszczania dźwigów przy minimalizacji kosztów transportu, jeśli:
+
+\begin{itemize}
+    \item znany jest damiar i niedobór dźwigów w poszczególnych miastach,
+    \item koszt przemieszczenia dźwigu typu I jest proporcjonalny do odległości
+    \item koszt przemieszczenie dźwigu typu II jest $20\%$ wyższy niż dźwigu typu I
+    \item dźwig typu I może być zastąpiony przez dźwig typu II, ale nie na odwrót. 
+\end{itemize}
+
+\section{Rozwiązanie}
+Do rozwiązania problemu stworzono model z parametrami: 
+\begin{itemize}
+    \item $odleglosc_{i,j}$ gdzie $i,j \in Miasto$ opisuje odleglosc pomiędzy miastami $i, j$;
+    \item $niedobor_{i,t}$ gdzie $i \in Miasto, t \in TypDzwigu$ opisuje niedobów dźwigów danego typu w danym mieście;
+    \item $nadmiar_{i,t}$ gdzie $i \in Miasto, t \in TypDzwigu$ opisuje nadmiar dźwigów danego typu w danym mieście;
+    \item $wspolczynnikPrzejazdu_{t}$ gdzie $t \in TypDzwigu$ opisuje współczynnik przejazdu jednej odległości dźwigiem danego typu;
+    \item $zastapienie_{t1, t2}$ gdzie $t1, t2 \in TypDzwigu$ opisuje możliwość zastąpienia dźwigu typu $t1$ typem $t2$.
+\end{itemize}
+\   \\
+Zmienną $przejazd_{i,j,t1,t2}$ gdzie $i,j \in Miasto, t1, t2 \in TypDzwigu$ informującą ile dźwigów danego typu $t1$
+przejedzie z miasta $i$, by zastąpić dźwig typu $t2$ w mieście $j$. 
+Celem zadania jest zminimalizowanie kosztów transportu dźwigów, zdefiniowany został poniżej
+$$min \rightarrow  \sum_{\substack{i,j \in Miasto\\ t1,t2 \in TypDzwigu}} przejazd_{i,j,t1,t2} * wspolczynnikPrzejazdu_{t1} * odleglosc_{i,j}$$
+Zadanie posiada dwa ograniczenia nadmiaru i niedoboru dźwigów:
+$$\forall \substack{i \in Miasto\\ t1 \in TypDzwigu} nadmiar_{i,t1} = \sum_{\substack{j \in Miasto\\ t2 \in TypDzwigu}} zastapienie_{t1,t2} * przejazd_{i,j,t1,t2} = 0$$
+$$\forall \substack{i \in Miasto\\ t2 \in TypDzwigu} niedobor_{i,t2} = \sum_{\substack{j \in Miasto\\ t1 \in TypDzwigu}} zastapienie_{t1,t2} * przejazd_{j,i,t1,t2} = 0$$
+
+Nadmiar zostaje spełniony gdy przetransportuje się nadmiarowe dźwigi, a niedobór poprzez przyjazd dźwigów z innych miast.
+
+
+\section{Wyniki i interpretacja}
+Plan przemieszczenia dźwigów został zaprezentowany w tabeli \ref{tabela_zad2}. 
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{| c | c | c | c | c |} 
+            \hline
+            \rowcolor{lgray}
+            Miast z & Miasto do & Typ z & Typ do & ilosc  \\ [0.5ex] 
+            \hline
+            Opole & Brzeg & I & I & 4 \\
+            \hline
+            Opole & Kozle & I & I & 3 \\
+            \hline
+            Brzeg & Brzeg & II & I & 1 \\
+            \hline
+            Nysa & Opole & II & II & 2 \\
+            \hline
+            Nysa & Brzeg & I & I & 5 \\
+            \hline
+            Nysa & Prudnik & I & I & 1 \\
+            \hline
+            Prudnik & Prudnik & II & I & 3 \\
+            \hline
+            Prudnik & StrzelceOpolskie & II & II & 4 \\
+            \hline
+            Prudnik & Kozle & II & II & 2 \\
+            \hline
+            Prudnik & Raciborz & II & II & 1 \\
+            \hline
+            StrzelceOpolskie & Kozle & I & I & 5 \\
+            \hline
+        \end{tabular}
+        \caption{Rozwiązanie zadania przemieszczania dźwigów}
+        \label{tabela_zad2}
+    \end{center}
+\end{table}
+
+Jak widać każde miasto zostało zaopatrzone w odpowiednią ilość dźwigów oraz w żadnym mieście nie ma nadmiarowej ilości.
+

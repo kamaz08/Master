@@ -1,0 +1,47 @@
+/*
+Kamil Sikorski
+221481
+*/
+
+data;
+
+set TypDzwigu := I II;
+
+param wspolczynnikPrzejazdu:=
+    I 1.0
+    II 1.15;
+
+param zastapienie: I II:=
+                I  1 0
+                II 1 1;
+set Miasto := Opole Brzeg Nysa Prudnik StrzelceOpolskie Kozle Raciborz;
+
+param odleglosc:            Opole   Brzeg   Nysa    Prudnik StrzelceOpolskie    Kozle   Raciborz :=
+        Opole               0.0     43.0    57.0    51.5    33.1                55.2    79.4
+        Brzeg               43.0    0.0     55.5    81.3    100.3               97.4    126.5
+        Nysa                57.0    55.5    0.0     27.3    95.8                75.1    87.3
+        Prudnik             51.5    81.3    27.3    0.0     67.8                50.0    61.4
+        StrzelceOpolskie    33.1    100.3   95.8    67.8    0.0                 22.8    59.0
+        Kozle               55.2    97.4    75.1    50.0    22.8                0.0     37.5
+        Raciborz            79.4    126.5   87.3    61.4    59.0                37.5    0.0;
+
+param niedobor:                 I   II:=
+    Opole                       0   2                      
+    Brzeg                       10  0   
+    Nysa                        0   0
+    Prudnik                     4   0
+    StrzelceOpolskie            0   4
+    Kozle                       8   2
+    Raciborz                    0   1;
+
+param nadmiar:                  I   II:=
+    Opole                       7   0                      
+    Brzeg                       0   1   
+    Nysa                        6   2
+    Prudnik                     0   10
+    StrzelceOpolskie            5   0
+    Kozle                       0   0
+    Raciborz                    0   0;
+
+
+end;

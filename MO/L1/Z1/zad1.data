@@ -1,0 +1,10 @@
+/*
+Kamil Sikorski
+221481
+*/
+
+data;
+
+param n := 10;
+
+end;

@@ -1,0 +1,60 @@
+\chapter{Zadanie 1}
+\thispagestyle{chapterBeginStyle}
+\label{rozdzial1}
+
+\section{Opis problemu}
+Zadanie polega na przetestowaniu algorytmów $LP$ pod względem dokładności i odporności
+ rozwiązująć następujące zagadnienie
+
+    $$min \ c^T x$$
+przy warunkach
+    $$Ax=b, \ x \geq 0,$$
+gdzie
+ $$a_{i,j} = \frac{1}{i+j-1}, i,j = 1,2,..,n$$
+ $$c_{i}=b_{i}=\sum^{n}_{j=1} \frac{1}{i+j-1}, i,j=1,2,...,n$$
+
+ \section{Rozwiązanie}
+ Do rozwiązania zadania napisano program obliczający równanie, jako dane wejściowe przyjmuje
+rozmiar $n$ macierzy $A$. Po skończeniu pracy program wypisuje na standardowe wyjście błąd względny. 
+
+\section{Wyniki i interpretacja}
+
+Uruchamiając program dla danych wejściowych $n = 2,3,...,10$ otrzymano błędy względne zawarte w tabeli \ref{tabela_zad1}.
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{|c | c|} 
+            \hline
+            \rowcolor{lgray}
+            n & błąd względny \\ [0.5ex] 
+            \hline
+            2 & 1.05325004057301e-15  \\ 
+            \hline
+            3 & 3.67157765110227e-15 \\
+            \hline
+            4 & 3.27016385075681e-13 \\
+            \hline
+            5 & 3.35139916635905e-12 \\
+            \hline
+            6 & 6.83335790676898e-11 \\
+            \hline
+            7 & 1.67868542192291e-08 \\
+            \hline
+            8 & 0.514058972177268 \\
+            \hline
+            9 & 0.682911338087722 \\
+            \hline
+            10 & 0.990387574803086 \\
+            \hline
+        \end{tabular}
+        \caption{Błedy względne macierzy}
+        \label{tabela_zad1}
+    \end{center}
+\end{table}
+
+Dla danych wejściowych $2,3,...,7$ wyniki są akceptowalne, jednak dla większego rozmiaru macierzy
+błąd względny jest za duży by rozwiązać ten układ równań. Przyczyną takiego zachowania jest uwarunkowanie macierzy
+Hilberta, który wynosi 
+$cond(H_n) = O\left({\frac{e^{3.5255n}}{\sqrt(n)}}\right)$ dla $n$ oznaczającego rozmiar macierzy.
+
+
