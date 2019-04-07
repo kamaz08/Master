@@ -26,7 +26,7 @@ namespace Chart.L4
 
         public IList<double> GetList(int n)
         {
-            return Enumerable.Range(0, n).Select(x => _coin.ThrowCoin() ? _average : _diffrent).ToList();
+            return Enumerable.Range(0, n).Select(x => _coin.ThrowCoin() ?  _average : _diffrent).ToList();
         }
     }
 }

@@ -28,8 +28,19 @@ namespace Chart.L4
             var game1 = new Game(11, 110);
             var game2 = new Game(0.05, 0.5);
 
-            Console.WriteLine($"Gra 11 110 średnia strata przy {nTest} próbach to {Enumerable.Range(0, nTest).Select(x => game1.Play(5)).Average()}");
-            Console.WriteLine($"Gra 11 110 średnia strata przy {nTest} próbach to {Enumerable.Range(0, nTest).Select(x => game2.Play(100)).Average()}");
+
+
+            var g1 = Enumerable.Range(0, nTest).Select(x => game1.Play(5));
+            var g2 = Enumerable.Range(0, nTest).Select(x => game2.Play(1100));
+            var ave1 = g1.Average();
+            var ave2 = g2.Average();
+            Console.WriteLine($"Gra 11 110 średnia strata przy {nTest} próbach to {ave1}");
+            Console.WriteLine($"Gra 0.05 0.5 średnia strata przy {nTest} próbach to {ave2}");
+
+            Console.WriteLine($"Gra 11 110  100 variancja strata przy {nTest} próbach to {g1.Average(x=> Math.Pow(x - ave1, 2))}");
+            Console.WriteLine($"Gra 0.05 0.5  1100 variancja strata przy {nTest} próbach to {g2.Average(x => Math.Pow(x - ave2, 2))}");
+
+
         }
 
         public static void Test(int count, int step, int testCount)
