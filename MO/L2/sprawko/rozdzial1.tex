@@ -1,0 +1,49 @@
+\chapter{Zadanie 1}
+\thispagestyle{chapterBeginStyle}
+\label{rozdzial1}
+
+\section{Opis problemu}
+Zadanie polega na zminimalizowaniu ilości odpadów w tartaku. Firma otrzymuje zamówienie na deski
+różnej szerokości, które są wycinane z desek o standardowej szerokości. Odpadem nazywane są deski,
+które przekraczają ilość zapotrzebowania oraz takie które nie mają odpowiedniego rozmiaru. 
+Danymi do zadania są: 
+\begin{itemize}
+    \item rozmiar deski standardowej (22 cali),
+    \item zamówienia na deski o rozmiarach 7, 5, 3 cali(110 o szerkości 7 cali, 120 o szerokości 5 cali oraz 80 o szerkości 3 cali).
+\end{itemize}
+
+ \section{Rozwiązanie}
+ Do rozwiązania zadania napisano program z parametrami:
+ \begin{itemize}
+    \item szerokość standardowej deski
+    \item zapotrzebowanie na deski o szerokości 3 cali
+    \item zapotrzebowanie na deski o szerokości 5 cali
+    \item zapotrzebowanie na deski o szerokości 7 cali
+\end{itemize}
+Program wyznacza możliwe sposoby podzielenia jednej deski na 3,5,7 calowe deski oraz odpad. Następnie
+minimalizuje odpad. 
+
+\section{Wyniki i interpretacja}
+Plan podziału desek przedstawiony jest w tabeli \ref{tabela_zad1}. Łączna suma nadmiaru to 18 cali. 
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{|c | c| c| c| c|} 
+            \hline
+            \rowcolor{lgray}
+            ilość & 7cal & 5cal & 3cal & odpad \\
+            \hline
+            9 & 1 & 0 & 5 & 0\\
+            \hline
+            28 & 1 & 3 & 0 & 0\\
+            \hline
+            37 & 2 & 1 & 1 & 0\\
+            \hline
+            \rowcolor{lgray}
+            suma & 111 & 121 & 82 & 0\\
+            \hline
+        \end{tabular}
+        \caption{Podział desek}
+        \label{tabela_zad1}
+    \end{center}
+\end{table}

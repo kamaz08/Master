@@ -1,0 +1,14 @@
+\select@language {polish}
+\select@language {polish}
+\contentsline {chapter}{\numberline {1}Zadanie 1}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Opis problemu}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Rozwi\IeC {\k a}zanie}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Wyniki i interpretacja}{1}{section.1.3}
+\contentsline {chapter}{\numberline {2}Zadanie 2}{2}{chapter.2}
+\contentsline {section}{\numberline {2.1}Opis problemu}{2}{section.2.1}
+\contentsline {section}{\numberline {2.2}Rozwi\IeC {\k a}zanie}{2}{section.2.2}
+\contentsline {section}{\numberline {2.3}Wyniki i interpretacja}{2}{section.2.3}
+\contentsline {chapter}{\numberline {3}Zadanie 3}{4}{chapter.3}
+\contentsline {section}{\numberline {3.1}Opis problemu}{4}{section.3.1}
+\contentsline {section}{\numberline {3.2}Rozwi\IeC {\k a}zanie}{4}{section.3.2}
+\contentsline {section}{\numberline {3.3}Wyniki}{4}{section.3.3}
