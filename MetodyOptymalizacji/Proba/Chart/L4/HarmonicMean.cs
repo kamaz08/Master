@@ -16,7 +16,7 @@ namespace Chart.L4
 
         public static double GetGeometricMean(this IList<double> list)
         {
-            return Math.Pow(list.Aggregate((a,x) => a*x) , 1 / list.Count);
+            return Math.Pow(list.Aggregate((a,x) => a*x) , 1.0 / list.Count);
         }
 
         public static  double GetArytmeticMean(this IList<double> list)

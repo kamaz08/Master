@@ -50,9 +50,9 @@ namespace Proba
 
         public static void L4()
         {
-             Chart.L4.Tests.GamePlay(100);
+             Chart.L4.Tests.GamePlay(1000);
 
-            Chart.L4.Tests.Test(100,10,1000);
+            Chart.L4.Tests.Test(70,2,1000);
         }
 
         static void Main(string[] args)
