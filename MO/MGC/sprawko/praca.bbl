@@ -1,0 +1,20 @@
+\begin{thebibliography}{1}
+
+\bibitem{4colorable}
+K.~Appel,  W.~Haken.
+\newblock Every planar map is four colorable.
+\newblock {\em Bulletin of the American Mathematical Society}, strony 711--712,
+  1976.
+
+\bibitem{brooks_1941}
+R.~L. Brooks.
+\newblock On colouring the nodes of a network.
+\newblock {\em Mathematical Proceedings of the Cambridge Philosophical
+  Society}, strony 194--197, 1941.
+
+\bibitem{NP}
+R.~M. Karp.
+\newblock Reducibility among combinatorial problems.
+\newblock {\em Complexity of Computer Computations}, strony 85--103, 1972.
+
+\end{thebibliography}

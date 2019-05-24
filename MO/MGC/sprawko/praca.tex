@@ -7,7 +7,7 @@
 
 % Styl dwustronny z domyślną wielkością czcionki 10pt oraz oddzieloną stroną tytułową (titlepage).
 % Domyślnie rodziały rozpoczynają się na stronie prawej (openright).
-\documentclass{book}
+\documentclass[oneside]{book}
 
 % ***************************************************************************************************
 % Ustawienia języka
@@ -60,7 +60,7 @@
 % Fixes/improves amsmath
 \usepackage{mathtools}
 
-
+\usepackage{slashbox}
 % ***************************************************************************************************
 % Kolory  
 % ***************************************************************************************************
@@ -410,6 +410,8 @@
 
 % Dołączanie rysunków
 \usepackage{graphicx}
+\graphicspath{{img/}} %Setting the graphicspath
+
 
 % Figury i przypisy
 \usepackage{caption}
@@ -558,8 +560,12 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIBLIOGRAFIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%	\pagestyle{bibliographyStyle}
-%	\bibliographystyle{plabbrv}
+	\pagestyle{bibliographyStyle}
+	\bibliographystyle{plabbrv}
+	\bibliography{literatura}
+	\thispagestyle{chapterBeginStyle}
+        \addcontentsline{toc}{chapter}{Bibliografia}
+
 	
 %	\cleardoublepage
 	
