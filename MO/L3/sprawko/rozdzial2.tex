@@ -1,0 +1,82 @@
+\chapter{Zadanie 2}
+\thispagestyle{chapterBeginStyle}
+\label{rozdzial2}
+
+\section{Opis problemu}
+Zadanie polega na zminimalizowaniu kosztu wykonania zadań $J = \{1,2,...,n\}$.
+Każde zadanie posiada czas wykoniania $p_{j}$, wagę zadania $w_{j}$ 
+oraz moment moment gotowości (moment przed który zadanie nie może być wykonane) $r_j$.
+Funkcja kosztu: 
+$\sum_{\substack{j \in J}} w_j C_j$,
+gdzie $C_j$ jest czasem zakończenia zadania $j$. 
+
+\section{Rozwiązanie}
+Do rozwiązania problemu stworzono program z parametrami: 
+\begin{itemize}
+    \item $p_{j}$ gdzie $j \in J$ opisuje czas wykonania zadania;
+    \item $w_{j}$ gdzie $j \in J$ opisuje wagę zadania;
+    \item $r_{j}$ gdzie $j \in J$ opisuje moment dostępności zadania;
+\end{itemize}
+\   \\
+Model rozwiązujący posiada:
+\begin{itemize}
+    \item Zmienną $x_{j,h}$ gdzie $j \in J, h \in Czas$ opisującą czy zadanie $j$ uruchomi się w momencie $h$;
+    \item Ogarniczenie $\forall \substack{j \in J} \sum_{\substack{h \in Czas}} x[j,h] == 1$ ogranicza dokładnie jedno uruchomienie każdego zadania;
+    \item Ogarniczenie $\forall \substack{j \in J} \sum_{\substack{h \in Czas}} x[j,h] >= r_j$ ogranicza moment dostępności zadania;
+    \item Ogarniczenie $\forall \substack{h \in Czas} \sum_{\substack{j \in J}} x[j,h] <= 1$ ogranicza nakładanie się zadań w tym samym czasie.
+\end{itemize}
+
+\section{Wyniki i interpretacja}
+W celu sprawdzenia rozwiązania uruchomiono program z parametrami podanych w tabeli \ref{tabela_zad2_dane}. 
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{| c | c | c | c |} 
+            \hline
+            \rowcolor{lgray}
+            Zadanie & Czas & dostępność & waga \\ [0.5ex] 
+            \hline
+            1 & 1 & 5 & 50\\
+            \hline
+            2 & 2 & 0 & 1 \\
+            \hline
+            3 & 3 & 0 & 2 \\
+            \hline
+            4 & 4 & 0 & 3 \\
+            \hline
+            5 & 5 & 0 & 5 \\
+            \hline
+        \end{tabular}
+        \caption{Przykładowe dane}
+        \label{tabela_zad2_dane}
+    \end{center}
+\end{table}
+\   \\
+\   \\
+Koszt rozwiązania dla danego problemu wyniósł 414, co zaprezentowane jest w tabeli \ref{tabela_zad2_rozwiazanie}.
+
+
+\begin{table}[ht]
+    \begin{center}
+        \begin{tabular}{| c | c |} 
+            \hline
+            \rowcolor{lgray}
+            Czas & Zadanie \\ [0.5ex] 
+            \hline
+            \hline
+            1 & 4 \\
+            \hline
+            5 & 1 \\
+            \hline
+            6  & 5 \\
+            \hline
+            11 & 3 \\
+            \hline
+            14 & 2 \\
+            \hline
+        \end{tabular}
+        \caption{Rozwiązanie}
+        \label{tabela_zad2_rozwiazanie}
+    \end{center}
+\end{table}
+
+

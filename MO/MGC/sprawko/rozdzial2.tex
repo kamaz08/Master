@@ -1,14 +1,118 @@
 \chapter{Sposoby rozwiązania}
 \thispagestyle{chapterBeginStyle}
 \label{rozdzial2}
-
+\iffalse
 \section{Dokładne rozwiązanie}
 %Finding a minimal coloring can be done using brute-force search (Christofides 1971; Wilf 1984; Skiena 1990, p. 214)
+\fi
 
-\section{Metody zachłanne}
+\section{Programowanie dynamiczne}
+Poniżej przedstawione algorytmy rozwiązują zagadnienie \textit{Minimalnego kolorowanie grafu},
+metodą dynamiczną, które rozwiązują problem dokładnie. Pierwszym algorytmem jest rozwiązanie przedstawione przez 
+Lawlera. Znajduje optymalne rozwiązanie w czasie $O(2.4423^n)$, gdzie $n$ to ilość wierzchołków\cite{LAWLER197666}.
+Lepszą złożonością obliczeniową wykazał się algorytm Eppstein'a rozwiązuje on problem w czasie $O(2.4150^n)$ \cite{Epp-JGAA-03}.
+Kolejnym krokiem wykazał się Byskov i osiągnął jak narazie najlepszy wynik dla \textit{Minimalnego Kolorowania Grafu} $O(2.4023^n)$ \cite{byskov2002chromatic}.
+
+
+\section{Programowanie zachłanne}
+Omówione poniżej algorytmy nie zapewniają optymalnego rozwiązania, często nie są jego bliskie, za to czas wykonywania jest znacznie szybszy.
+Zaletą tego rodzaju algorytmów jest to, że mogą posłużyć do znalezienia górnego ograniczenia.
+
+Algorytm \textit{DSATUR} zaproponowany przez Brélaz'a \cite{Brelaz}.
+Alogorytm ten jest wciąż rozwijany oraz wykorzystywany, dlatego kod podstawowej wersji został umieszczony Algorithm \ref{DSATUR}, złożoność obliczeniowa wynosi $O(n^2)$.
+Innym algorytmem zachłannym jest \textit{Recursive Largest First} (\textit{RLF}), zaprojektowanym przez \textit{Leighton} \cite{Lewis}. 
+Algorytm działa w czasie $O(n^3)$, jest wolniejszy niż \textit{DSATUR}, a wyniki są porównywalne. 
+
+\section{DSATUR-based branch and bound }
+Metoda ta opiera się na przeszukiwaniu drzewa reprezentującego przestrzeń rozwiązań problemu. 
+Stosowane w tej metodzie odcięcia redukują liczbę przeszukiwanych węzłów. 
+\textit{DSATUR-based branch-and-bound} w literaturze najczęściej spotyka się skróconą wewrsje \textit{DSATUR}. 
+W rozwiązaniu zasugewrował, aby rozpocząć kolorowanie od dużej kliki i etapu wstępnego przetwarzania przy użyciu heurystyki \textit{DSATUR}. 
+\textit{Sewell} poprawił to podejście, wprowadzając nową strategię rozsądzania remisu \cite{Sewell1993AIA}.
+\textit{Segundo} zasugerował zastosowanie tej strategii tylko selektywnie, dzięki temu poprawił ogólną wydajność.
+Nazwał ten algorytm \textit{PASS} i został testowany na podzbiorze \textit{DIMACS}(\href{http://archive.dimacs.rutgers.edu/Challenges/}{informacje}) i na 
+grafach losowych. Praca \textit{Fabio Furini, Virginie Gabrel, Ian-Christopher Ternier} polegała na zmodyfikowania podstawowej wersji by zmieniać dolną granice rozwiązania. 
+Wyniki są lepsze dla grafów losowych o dużej gęstości $0.7 - 0.9$ \cite{furini}, na grafach \textit{DIMACS} uzyskuje podobne wyniki jak algorytm \textit{PASS}.
+\\ \
+
+\begin{algorithm}[H]
+    \newenvironment{polishalgorithm}[1][]
+    \KwData{graf G}
+    \KwData{graf G}
+    \KwResult{Niezależne zbiory $\mathbf{S}$}
+    $\mathbf{S} \rightarrow \emptyset$ \\
+    $X \rightarrow V(G) $ \\
+    \While {$X \neq \emptyset$}{
+        Wybierz $v \in X$\\
+        \For{$j \leftarrow 1 do |\mathbf{S}|$}{
+            \If{$S_j \cup \{v\}$ jest niezależny}{
+                $S_j \leftarrow S_j \cup \{v\}$ \\
+                $break$
+            }
+        }
+        \If{$j > |\mathbf{S}|$}{
+            $S_j \leftarrow \{v\}$ \\
+            $\mathbf{S} \leftarrow \mathbf{S} \cup S_j $
+        }
+        $X \leftarrow X - \{v\}$
+    }
+    \caption{DSATUR}
+    \label{DSATUR}
+\end{algorithm}
+
+\section{Programowanie liniowe}
+
+\textit{Annuj Mehrotra, Michael A. Trick} zaprezentowali sposób rozwiązania problemu programowaniem liniowym \cite{Mehrotra}.
+Metoda opiera się na rozwiązaniu problemu \textit{Maximum weighted independent set} wielokrotnie 
+i znalezieniu rozwiązania całkowitoliczbowego, które jest odpowiednie do uzyskania rozwiązania bazowego problemu.
+
+\textit{Gualandi, Stefano and Malucelli, Federico} rozwiązują problem łącząc wiele metod \cite{Gualandi}. 
+Podejście generowania kolumn zostało ulepszone dzięki zastosowaniu programowania ograniczeń w celu 
+rozwiązania podprogramu cenowego i obliczenia rozwiązań heurystycznych. Ponadto wprowadzili nowe techniki 
+w celu poprawy wydajności generowania kolumn w rozwiązywaniu zarówno liniowej relaksacji,
+jak i problemu liczby całkowitej. Dodatkowo rozszerzyli swoje rozwiązania do wyliczenia problemu \textit{Minimum Vertex Graph Multicoloring}.
+
+
+
+
+
+
+
+
+
+\iffalse
+
+
+\subsection{Algorytm Lawlera}
+
+
+
+\begin{algorithm}[H]
+    \newenvironment{polishalgorithm}[1][]
+    \KwData{graf G}
+    \KwData{graf G}
+    \KwResult{Liczba chromantyczna}
+    $n \leftarrow := |V(G)|$ \\
+    $X \leftarrow $ tablica od $0$ do $2^n - 1$ \\
+    $X[0] \leftarrow 0$ \\
+    \For{$S\leftarrow 1$ \KwTo $2^n - 1$}{
+        $s \leftarrow f(S)$ \\
+        $X[s] \leftarrow \inf$ \\
+        \For{$I\leftarrow  1$ \KwTo $2^n - 1$}{
+
+        }
+    }
+        
+        \caption{LARAC}
+\end{algorithm}
+
+\section{Metoda Lawlera} 
+Lawler przedstawił 
+
 
 
 \section{Metody heurystyczne}
 %Brelaz's heuristic algorithm can be used to find a good, but not necessarily minimum vertex coloring.
 
 
+\fi

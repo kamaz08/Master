@@ -3,16 +3,21 @@
 \label{rozdzial1}
 
 W \textit{Teori Grafów} kolorowanie grafu jest szczególnym przypadkiem etykietowania, tradycyjnie nazywanymi kolorami. 
-\textit{Minimalne Kolorowanie Grafu} inaczej nazywane \textit{Liczbą Chromantyczną} jest problemem \textit{NP-trudnym}\cite{NP}, dlatego nie ma wielomianowego algorytmu rozwiązującego zadanie. 
+\textit{Minimalne Kolorowanie Grafu} etykietuje wierzchołki (kolorami) tak bym, żadna krawędź nie łączyła dwóch wierzchołków o tej samej etykiecie (kolorze).
+Minimalna ilość kolorów potrzebna do \textit{Minimalnego Kolorowania Grafu} nazywana jest \textit{Liczbą Chromantyczną} samo wyznaczenie tej liczby jest problemem \textit{NP-trudnym}\cite{NP}, dlatego nie ma wielomianowego algorytmu rozwiązującego zadanie. 
 
 Zastosowaniem algorytmu rozwiązującego kolorowanie grafu, może być szeregowanie zadań. 
 Gdzie wierzchołki są zadaniami, a krawędzie pomiędzy nimi zasobem współdzielonym.
 Rozwiązanie problemu mówiło by w jaki sposób uruchamiać grupy zadań,
-by zasób wspódzielony wykorzystywany byłby przez jedną maszynę w jednym momencie.
+by zasób wspódzielony wykorzystywany byłby przez jedną maszynę na raz.
+
+Problemem z życia może być układanie planu zajęć, gdzie krawędziami są sale lub lektorzy, a wierzchołkami ilość zajęć.  
+Liczba kolorów mówiłaby ile godzin zajęciowych potrzebnych jest do zrealizowania planu, a grupy wierzchołków prezentowały by jakie zajęcia mogą obywać się o jednej godzinie.
+
 
 \section{Opis problemu}
 \textit{Minimalne Kolorowanie Grafu} jest przypisaniem kolorów do każdego wierzchołka grafu, tak że żadna krawędź nie łączy dwóch identycznie pokolorowanych wierzchołków.
-Problemem jest znalezienie jak najmniejszej liczby kolorów.
+Problemem jest znalezienie takiego etykietowania by nie można było znaleźć etykietowania z mniejszą ilością kolorów.
 
 \subsection{Model}
 \begin{itemize}
@@ -21,18 +26,23 @@ Problemem jest znalezienie jak najmniejszej liczby kolorów.
     \item Miara: Ilość zbiorów $V_i$
 \end{itemize}
 
+\clearpage
+
+
 \section{Przykłady}
 Poniżej zostały przedstawione przykłady rozwiązania problemu \textit{Minimalnego Kolorowania Grafu} z
- różnymi rodzajami grafów. Omawiane grafy przedstawione są są na rysunkach \ref{Przyklady}.
-\begin{itemize}
+ różnymi rodzajami grafów. Omawiane grafy przedstawione są na rysunkach \ref{Przyklady}.
+
+ \begin{itemize}
     \item \textit{Graf pełny} rozwiązaniem dla niego jest $|V|$, ponieważ każdy wierzchołek posiada krawędź z
      pozostałymi wierzchołkami, dlatego każdy z nich musi mieć inny kolor.
     \item \textit{Graf k-dzielny} jego definicja opisuje szukane rozwiązanie dla \textit{Minimalnego Kolorowania Grafu}, tzn. wartość $k$  \textit{k-dzielności grafu} opisuje rozwiązanie. W rysunku \textit{b} został przedstawiony graf \textit{graf 3-dzielny}, gdzie kolory wierzchołków opisują grupy do której należą.
-    \item \textit{Graf planarny} każdy graf prosty tego rodzaju jest $4-kolorowalny$ \cite{4colorable}. Na przedstawionym przykładzie grafu planarnego widać, że nie można znaleźć miejsca dla wierzchołka połączonego z czteroma wierzchołkami o różnych kolorach, nie przecinając istniejącej krawędzi.
+    \item \textit{Graf planarny} każdy graf prosty tego rodzaju jest co najwyżej $4-kolorowalny$ \cite{4colorable}. Na przedstawionym przykładzie grafu planarnego widać, że nie można znaleźć miejsca dla wierzchołka połączonego z czteroma wierzchołkami o różnych kolorach, nie przecinając istniejącej krawędzi.
     \item Dla pozostałych grafów przedstawione zostało górne ograniczenie \textit{Kolorowanie grafu}, znane jako \textit{Twierdzenie Brooksa} \cite{brooks_1941}. 
     Ustala że \textit{liczba chromatyczna} jest niewiększa niż maksymalny stopień wierzchołka ($max(deg(V))$), z wyjątkiem
      \textit{grafu z nieparzystym cyklem} wtedy wartość jest nie większa niż $max(deg(V)) + 1$.
 \end{itemize}
+
 
 \begin{figure}
     \begin{subfigure}[t]{0.4\textwidth}
@@ -60,7 +70,7 @@ Poniżej zostały przedstawione przykłady rozwiązania problemu \textit{Minimal
     \end{subfigure}
     \caption{Przykładowe grafy}
     \label{Przyklady}
-  \end{figure}
+\end{figure}
 
 
 

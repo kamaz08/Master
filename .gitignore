@@ -259,3 +259,11 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+/MO/L3/SoUPM/instancias100a120/*
+/MO/L3/SoUPM/instancias100a200/*
+/MO/L3/SoUPM/instancias1a100/*
+/MO/L3/SoUPM/instancias10a100/*
+/MO/L3/SoUPM/instanciasde10a100/*
+/MO/L3/SoUPM/instancias1000a1100/*
+/MO/L3/SoUPM/MaqCorre/*

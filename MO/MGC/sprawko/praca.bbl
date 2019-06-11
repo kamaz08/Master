@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{4colorable}
 K.~Appel,  W.~Haken.
@@ -6,15 +6,64 @@ K.~Appel,  W.~Haken.
 \newblock {\em Bulletin of the American Mathematical Society}, strony 711--712,
   1976.
 
+\bibitem{Brelaz}
+D.~Brélaz.
+\newblock New methods to color the vertices of a graph.
+\newblock {\em Commun. ACM}, 22:251--256, 04 1979.
+
 \bibitem{brooks_1941}
 R.~L. Brooks.
 \newblock On colouring the nodes of a network.
 \newblock {\em Mathematical Proceedings of the Cambridge Philosophical
   Society}, strony 194--197, 1941.
 
+\bibitem{byskov2002chromatic}
+J.~M. Byskov.
+\newblock Chromatic number in time o (2.4023\^{} n) using maximal independent
+  sets.
+\newblock {\em BRICS Report Series}, 9(45), 2002.
+
+\bibitem{Epp-JGAA-03}
+D.~Eppstein.
+\newblock {Small maximal independent sets and faster exact graph coloring}.
+\newblock {\em J. Graph Algorithms {\&} Applications}, 7(2):131--140, 2003.
+\newblock Special issue for WADS'01.
+
+\bibitem{furini}
+F.~Furini, V.~Gabrel, I.~Ternier.
+\newblock {An Improved DSATUR-Based Branch-and-Bound Algorithm for the Vertex
+  Coloring Problem}.
+\newblock {\em {Networks}}, 69(1), 2017.
+
+\bibitem{Gualandi}
+S.~Gualandi,  F.~Malucelli.
+\newblock Exact solution of graph coloring problems via constraint programming
+  and column generation.
+\newblock {\em INFORMS Journal on Computing}, 24(1):81--100, 2012.
+
 \bibitem{NP}
 R.~M. Karp.
 \newblock Reducibility among combinatorial problems.
 \newblock {\em Complexity of Computer Computations}, strony 85--103, 1972.
+
+\bibitem{LAWLER197666}
+E.~Lawler.
+\newblock A note on the complexity of the chromatic number problem.
+\newblock {\em Information Processing Letters}, 5(3):66 -- 67, 1976.
+
+\bibitem{Lewis}
+R.~R. Lewis.
+\newblock {\em A Guide to Graph Colouring: Algorithms and Applications}.
+\newblock Springer Publishing Company, Incorporated, wydanie 1st, 2015.
+
+\bibitem{Mehrotra}
+A.~Mehrotra,  M.~Trick.
+\newblock A column generation approach for graph coloring.
+\newblock {\em INFORMS J Comput}, 8, 09 1995.
+
+\bibitem{Sewell1993AIA}
+E.~C. Sewell.
+\newblock A. improved algorithm for exact graph coloring.
+\newblock 26:359--373, 1993.
 
 \end{thebibliography}
