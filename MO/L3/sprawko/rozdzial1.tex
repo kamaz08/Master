@@ -76,163 +76,76 @@ zadań, maszyn i numer zestawu (np. 1025 - 10 oznacza setki zadań tzn. 10 * 100
     \item \textit{instancias1a100} - czas wykonywania zadania jest z przedziału $[1,2,...,100]$,
     \item \textit{instancias100a120} - czas wykonywania zadania jest z przedziału $[100,101,...,120]$,
     \item \textit{instancias100a200} - czas wykonywania zadania jest z przedziału $[100,101,...,200]$,
-    \item \textit{instancias10a100} - czas wykonywania zadania jest z przedziału $[10,11,...,100]$,
-    \item \textit{instancias1000a1100} - czas wykonywania zadania jest z przedziału $[1000,1001,...,1100]$,
+    \item \textit{instanciasde10a100} - czas wykonywania zadania jest z przedziału $[10,11,...,100]$,
+    \item \textit{instanciasde1000a1100} - czas wykonywania zadania jest z przedziału $[1000,1001,...,1100]$,
     \item \textit{JobsCorre} - czas wykonywania jest wszczególności zmienny względem zadania,
     \item \textit{MaqCorre} - czas wykonywania jest wszczególności zmienny względem maszyny,
 \end{itemize}
-Wyniki zostały porównane z wynikami na stronie \textit{http://soa.iti.es/problem-instances}.
-Wykresy z danych \textit{instancias} są bardzo zbliżone do siebie. Jak widać algorytm lepiej działa w przypadku
-gdy wiele zadań przydzielone jest do jednej maszyny. Dane testowe textit{JobsCorre} wnioski podobne.
-Dla danych testowych textit{MaqCorre} algorytm działa bardzo zbliżenie do tego podanego w rozwiązaniu. 
-Wyniki wszystkich testów załączony jest w załączniku. 
+Wyniki algorytmu zostały porównane z wynikami optymalnymi. Algorytm nigdy nie zwraca wyniku o koszcie dwukrotnie większym od optymalnego. 
+
+Koszty dla danych z \textit{JobsCorre}, \textit{MaqCorre}, \textit{instancias1a100}, \textit{instanciasde10a100} przedstawiają się podobnie, 
+Wraz ze wzrostem współczynnika $|J|/|M|$ maleje odchylenie od optymalnego rozwiązania. Czym więcej
+zadań musi zostać uruchomionych na jednej maszynie tym algorytm działa optymalniej. 
+
+Dla danych z \textit{instancias100a120}, \textit{instancias100a200}, \textit{Instanciasde1000a1100} 
+można zaobserwować, że dla współczynnika $|J|/|M|$ będącego liczbą niecałkowitą, następują mniejsze odchylenia od 
+wartości optymalnej. Spowodowane jest to przez przedział kosztu pojedynczego zadania
+(np. \textit{Instanciasde1000a1100} posiada stałą $1000$ i przedział $[0..100]$), jeżeli iloraz 
+stałej i górnego ograniczenia przedziału jest odpowiednio duży oraz na conajmniej jedną maszynę musi
+ przypaść $|J|/|M| + 1$ zadań. To minimalny koszt zbiega do $(|J|/|M| + 1) * stala $, 
+dzięki temu maszyny z mniejszą ilością zadań mają pewną downolność względem wyboru zadań. 
+
+Inną rzeczą którą można zauważyć jest mniejsze odchylenie od optimum względem przedziału pojedynczego zadania. 
+Dla \textit{JobsCorre}, \textit{MaqCorre}, \textit{instancias1a100} iloraz kosztu do optymalnego sięga $1.9$, gdzie dla danych
+z \textit{instancias100a120}, \textit{instancias100a200}, \textit{Instanciasde1000a1100}, \textit{instanciasde10a100} nie jest większe niż 
+$1.6$.
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{1-100_10.png}
-    \caption{Dane dla 1 - 100 z 10 maszynami}
-    \label{1-100_10}
-\end{figure}
-
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{1-100_20.png}
-    \caption{Dane dla 1 - 100 z 20 maszynami}
-    \label{1-100_20}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{1-100_30.png}
-    \caption{Dane dla 1 - 100 z 30 maszynami}
-    \label{1-100_30}
+    \includegraphics[scale=0.4]{1a100.png}
+    \caption{Dane dla 1 - 100}
+    \label{1-100}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{1-100_40.png}
-    \caption{Dane dla 1 - 100 z 40 maszynami}
-    \label{1-100_40}
-\end{figure}
-
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{1-100_50.png}
-    \caption{Dane dla 1 - 100 z 50 maszynami}
-    \label{1-100_50}
-\end{figure}
-
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{100-120_10.png}
-    \caption{Dane dla 100 - 120 z 10 maszynami}
-    \label{100-120_10}
+    \includegraphics[scale=0.33]{10a100.png}
+    \caption{Dane dla 10 - 100}
+    \label{10-100}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{100-120_20.png}
-    \caption{Dane dla 100 - 120 z 20 maszynami}
-    \label{100-120_20}
+    \includegraphics[scale=0.4]{maq.png}
+    \caption{Dane dla MaqCorre}
+    \label{maq}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{100-120_30.png}
-    \caption{Dane dla 100 - 120 z 30 maszynami}
-    \label{100-120_30}
+    \includegraphics[scale=0.4]{job.png}
+    \caption{Dane dla JobsCorre}
+    \label{job}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{100-120_40.png}
-    \caption{Dane dla 100 - 120 z 40 maszynami}
-    \label{100-120_40}
+    \includegraphics[scale=0.33]{100a120.png}
+    \caption{Dane dla 100 - 120}
+    \label{100-120}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{100-120_50.png}
-    \caption{Dane dla 100 - 120 z 50 maszynami}
-    \label{100-120_50}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{jobs_10.png}
-    \caption{Dane dla JobsCorre z 10 maszynami}
-    \label{jobs_10}
+    \includegraphics[scale=0.4]{100a200.png}
+    \caption{Dane dla 100 - 200}
+    \label{100-200}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{jobs_20.png}
-    \caption{Dane dla JobsCorre z 20 maszynami}
-    \label{jobs_20}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{jobs_30.png}
-    \caption{Dane dla JobsCorre z 30 maszynami}
-    \label{jobs_30}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{jobs_40.png}
-    \caption{Dane dla JobsCorre z 40 maszynami}
-    \label{jobs_40}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{jobs_50.png}
-    \caption{Dane dla JobsCorre z 50 maszynami}
-    \label{jobs_50}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{moq_10.png}
-    \caption{Dane dla MaqCorre z 10 maszynami}
-    \label{moq_10}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{moq_20.png}
-    \caption{Dane dla MaqCorre z 20 maszynami}
-    \label{moq_20}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{moq_30.png}
-    \caption{Dane dla MaqCorre z 30 maszynami}
-    \label{moq_30}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{moq_40.png}
-    \caption{Dane dla MaqCorre z 40 maszynami}
-    \label{moq_40}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.3]{moq_50.png}
-    \caption{Dane dla MaqCorre z 50 maszynami}
-    \label{moq_50}
+    \includegraphics[scale=0.33]{1000a1100.png}
+    \caption{Dane dla 1000 - 1100}
+    \label{1100-1000}
 \end{figure}

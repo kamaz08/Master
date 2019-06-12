@@ -8,8 +8,8 @@ using GLPKMathProgInterface
 
 
 
-const showLog = false
-const showModelLog = false
+const showLog = true
+const showModelLog = true
 const showSolution = true
 const showCost = true
 const saveToFile = false
@@ -33,6 +33,8 @@ function PrintSolution(solution :: Dict{Int64, Array{Int,1}})
     if showSolution
         println("$(Dates.format(now(), "HH:MM:SS"))")
         println(solution)
+        a = Dict{Int64, Int64} ()
+
     end
 end
 
@@ -249,7 +251,7 @@ end
 
 
 function Program()
-    Solve("instancias1a100//1011.txt", open("a","w"))
+    Solve("instancias100a120//141.txt", open("a","w"))
 end
 
 Program()
