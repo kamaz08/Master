@@ -33,8 +33,6 @@ function PrintSolution(solution :: Dict{Int64, Array{Int,1}})
     if showSolution
         println("$(Dates.format(now(), "HH:MM:SS"))")
         println(solution)
-        a = Dict{Int64, Int64} ()
-
     end
 end
 
